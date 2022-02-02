@@ -16,4 +16,6 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['.out'],
   },
+
+  base: '/kui-dashboard-vue/',
 })

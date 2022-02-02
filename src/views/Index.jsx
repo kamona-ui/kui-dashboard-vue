@@ -110,6 +110,7 @@ const CTAButtons = defineComponent({
 export default defineComponent({
   setup() {
     onMounted(() => {
+      // TODO: start animation after load images.
       gsap.from(['#mobile2Showcase', '#mobile1Showcase'], {
         rotateZ: 0,
         rotateY: 0,

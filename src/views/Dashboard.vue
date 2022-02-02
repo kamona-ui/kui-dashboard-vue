@@ -70,6 +70,12 @@
                 </template>
             </QuiclStatisticsCard>
         </section>
+
+        <section>
+            <h2
+                class="text-2xl text-red-400 animate-pulse"
+            >Still in design phase, Will be available soon.</h2>
+        </section>
     </PageWrapper>
 </template>
 

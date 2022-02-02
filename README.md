@@ -1,8 +1,10 @@
 ## K UI Admin Dashboard Template (Vue 3)
 
-### [live preview](https://kamona-ui.github.io/kui-dashboard-vue/)
-
 > This template is not finished yet and still in design phase. We are building it in public.
+
+### [Live preview](https://kamona-ui.github.io/kui-dashboard-vue/)
+
+### [Figma file](https://www.figma.com/community/file/1019844542917981418/)
 
 ##### To get started:
 
