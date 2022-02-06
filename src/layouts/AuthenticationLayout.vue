@@ -17,7 +17,7 @@
             </div>
         </main>
 
-        <PageFooter class="w-full" />
+        <PageFooter />
     </div>
 </template>
 

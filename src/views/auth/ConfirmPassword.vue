@@ -27,7 +27,8 @@
 
             <div>
                 <Button
-                    class="w-full justify-center"
+                    type="submit"
+                    class="justify-center w-full"
                     :disabled="confirmPasswordForm.processing"
                 >Confirm</Button>
             </div>

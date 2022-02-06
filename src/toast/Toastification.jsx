@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import { CheckIcon, XIcon, ExclamationCircleIcon, QuestionMarkCircleIcon } from '@heroicons/vue/outline'
+import { CheckIcon, XIcon, ExclamationIcon, QuestionMarkCircleIcon } from '@heroicons/vue/outline'
 import '@/toast/style.css'
 import Button from '@/components/Button.vue'
 
@@ -71,7 +71,7 @@ export default defineComponent({
         Icon = CheckIcon
         break
       case 'warning':
-        Icon = ExclamationCircleIcon
+        Icon = ExclamationIcon
         break
       case 'error':
         Icon = XIcon
@@ -93,7 +93,14 @@ export default defineComponent({
               <Icon aria-hidden="true" class="w-6 h-6 text-white" />
             </span>
 
-            <Button onClick={handleClose} iconOnly size="sm" variant="secondary" class="absolute right-2 top-2">
+            <Button
+              onClick={handleClose}
+              iconOnly
+              size="sm"
+              variant="secondary"
+              srText="Close notification"
+              class="absolute right-2 top-2"
+            >
               {({ iconSizeClasses }) => (
                 <>
                   <XIcon aria-hidden="true" class={iconSizeClasses} />

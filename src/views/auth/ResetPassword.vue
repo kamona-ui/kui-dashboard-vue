@@ -61,7 +61,8 @@
 
             <div>
                 <Button
-                    class="w-full justify-center"
+                    type="submit"
+                    class="justify-center w-full"
                     :disabled="resetPasswordForm.processing"
                 >Reset Password</Button>
             </div>

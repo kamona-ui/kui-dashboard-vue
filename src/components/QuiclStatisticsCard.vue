@@ -91,7 +91,7 @@
             </Menu>
         </div>
 
-        <div class="relative grid grid-cols-2">
+        <div class="relative grid grid-cols-2 overflow-hidden">
             <div>
                 <h4 class="text-3xl font-semibold">{{ result }}</h4>
                 <p class="text-base font-medium text-gray-500">{{ title }}</p>
@@ -130,8 +130,11 @@ const props = defineProps({
         default: '#'
     },
     chartData: {
-        type: Array,
-        default: () => [],
+        type: [Array, Object],
+        default: () => ({
+            data: [],
+            categories: [],
+        }),
     }
 })
 
@@ -140,7 +143,7 @@ onMounted(() => {
         series: [
             {
                 name: props.title,
-                data: props.chartData,
+                data: props.chartData.data ?? props.chartData,
             },
         ],
         chart: {
@@ -150,8 +153,6 @@ onMounted(() => {
             toolbar: {
                 show: false,
             },
-
-            // 
             sparkline: {
                 enabled: true,
             },
@@ -162,12 +163,10 @@ onMounted(() => {
         },
         grid: {
             show: false,
-            // 
             padding: {
                 left: 0,
                 right: 0,
             },
-            // 
             xaxis: {
                 lines: {
                     show: false,
@@ -181,7 +180,7 @@ onMounted(() => {
         },
         xaxis: {
             type: 'datetime',
-            categories: [
+            categories: props.chartData.categories ?? [
                 '1/11/2000',
                 '2/11/2000',
                 '3/11/2000',
@@ -242,5 +241,14 @@ onMounted(() => {
 <style>
 .apexcharts-canvas {
     background: transparent !important;
+}
+
+.dark .apexcharts-tooltip.apexcharts-theme-light.apexcharts-active,
+.dark .apexcharts-tooltip.apexcharts-theme-light {
+    background: transparent !important;
+    background-color: rgb(34 39 56) !important;
+    color: #fff !important;
+    border: 1px solid rgb(21 24 35) !important;
+    box-shadow: none !important;
 }
 </style>

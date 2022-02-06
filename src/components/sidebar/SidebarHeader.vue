@@ -8,7 +8,6 @@
         <Button
             iconOnly
             variant="secondary"
-            type="button"
             v-slot="{ iconSizeClasses }"
             v-show="sidebarState.isOpen || sidebarState.isHovered"
             @click="sidebarState.isOpen = !sidebarState.isOpen"
@@ -34,7 +33,7 @@
 <script setup>
 import Logo from '@/components/Logo.vue'
 import Button from '@/components/Button.vue'
-import { MenuFoldLineLeftIcon, MenuFoldLineRightIcon } from '@/components/Icons/outline'
+import { MenuFoldLineLeftIcon, MenuFoldLineRightIcon } from '@/components/icons/outline'
 import { XIcon } from '@heroicons/vue/outline'
 import { sidebarState } from '@/composables'
 </script>

@@ -15,12 +15,15 @@
         </SidebarLink>
 
         <SidebarCollapsible title="Authentication">
+            <template #icon>
+                <ShieldCheckIcon class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
+            </template>
             <SidebarCollapsibleItem :to="{ name: 'Login' }" title="Login" />
             <SidebarCollapsibleItem :to="{ name: 'Register' }" title="Register" />
-            <SidebarCollapsibleItem :to="{ name: 'VerifyEmail' }" title="VerifyEmail" />
-            <SidebarCollapsibleItem :to="{ name: 'ForgotPassword' }" title="ForgotPassword" />
-            <SidebarCollapsibleItem :to="{ name: 'ResetPassword' }" title="ResetPassword" />
-            <SidebarCollapsibleItem :to="{ name: 'ConfirmPassword' }" title="ConfirmPassword" />
+            <SidebarCollapsibleItem :to="{ name: 'VerifyEmail' }" title="Verify Email" />
+            <SidebarCollapsibleItem :to="{ name: 'ForgotPassword' }" title="Forgot Password" />
+            <SidebarCollapsibleItem :to="{ name: 'ResetPassword' }" title="Reset Password" />
+            <SidebarCollapsibleItem :to="{ name: 'ConfirmPassword' }" title="Confirm Password" />
         </SidebarCollapsible>
     </PerfrectScrollbar>
 </template>
@@ -29,7 +32,8 @@
 import { useRouter } from 'vue-router'
 import PerfrectScrollbar from '@/components/PerfectScrollbar.vue'
 import SidebarLink from '@/components/sidebar/SidebarLink.vue'
-import { DashboardIcon } from '@/components/Icons/outline'
+import { DashboardIcon } from '@/components/icons/outline'
+import { ShieldCheckIcon } from '@heroicons/vue/outline'
 import SidebarCollapsible from '@/components/sidebar/SidebarCollapsible.vue'
 import SidebarCollapsibleItem from '@/components/sidebar/SidebarCollapsibleItem.vue'
 

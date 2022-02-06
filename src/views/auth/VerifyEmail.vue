@@ -13,6 +13,7 @@
     <form @submit.prevent="submit">
         <div class="flex items-center justify-between mt-4">
             <Button
+                type="submit"
                 :class="{ 'opacity-25': verifyEmailForm.processing }"
                 :disabled="verifyEmailForm.processing"
             >Resend Verification Email</Button>

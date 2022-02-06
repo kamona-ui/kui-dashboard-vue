@@ -52,15 +52,14 @@
                 <router-link
                     :to="{ name: 'ForgotPassword' }"
                     class="text-sm text-blue-500 hover:underline"
-                >
-                    Forgot your password?
-                </router-link>
+                >Forgot your password?</router-link>
             </div>
 
             <!-- Login button -->
             <div>
                 <Button
-                    class="justify-center gap-2 w-full"
+                    type="submit"
+                    class="justify-center w-full gap-2"
                     :disabled="loginForm.processing"
                     v-slot="{ iconSizeClasses }"
                 >

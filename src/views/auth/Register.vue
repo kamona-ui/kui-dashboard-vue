@@ -93,12 +93,12 @@
                             <a
                                 target="_blank"
                                 href="#"
-                                class="underline text-sm text-blue-600 hover:text-blue-900"
+                                class="text-sm text-blue-600 underline hover:text-blue-900"
                             >Terms of Service</a> and
                             <a
                                 target="_blank"
                                 href="#"
-                                class="underline text-sm text-blue-600 hover:text-blue-900"
+                                class="text-sm text-blue-600 underline hover:text-blue-900"
                             >Privacy Policy</a>
                         </div>
                     </div>
@@ -108,7 +108,8 @@
             <!-- Register button -->
             <div>
                 <Button
-                    class="justify-center gap-2 w-full"
+                    type="submit"
+                    class="justify-center w-full gap-2"
                     :disabled="registerForm.processing"
                     v-slot="{ iconSizeClasses }"
                 >

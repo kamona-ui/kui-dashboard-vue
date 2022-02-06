@@ -4,8 +4,6 @@ import { reactive, ref } from 'vue'
 export const isDark = useDark()
 export const toggleDarkMode = useToggle(isDark)
 
-export const isMobileMenuOpen = ref(false)
-
 export const sidebarState = reactive({
   isOpen: window.innerWidth > 1024,
   isHovered: false,

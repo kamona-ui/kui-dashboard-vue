@@ -13,7 +13,6 @@
             <Button
                 iconOnly
                 variant="secondary"
-                type="button"
                 @click="toggleDarkMode"
                 v-slot="{ iconSizeClasses }"
                 class="md:hidden"
@@ -28,7 +27,6 @@
             <Button
                 iconOnly
                 variant="secondary"
-                type="button"
                 @click="toggleDarkMode"
                 v-slot="{ iconSizeClasses }"
                 class="hidden md:inline-flex"
@@ -41,7 +39,6 @@
             <Button
                 iconOnly
                 variant="secondary"
-                type="button"
                 @click="toggleFullScreen"
                 v-slot="{ iconSizeClasses }"
                 class="hidden md:inline-flex"
@@ -59,10 +56,10 @@
             <Dropdown align="right" width="48">
                 <template #trigger>
                     <button
-                        class="flex text-sm border-2 border-transparent rounded-md transition focus:outline-none focus:ring focus:ring-purple-500 focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-dark-eval-1"
+                        class="flex text-sm transition border-2 border-transparent rounded-md focus:outline-none focus:ring focus:ring-purple-500 focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-dark-eval-1"
                     >
                         <img
-                            class="h-8 w-8 rounded-md object-cover"
+                            class="object-cover w-8 h-8 rounded-md"
                             :src="userAvatar"
                             alt="User Name"
                         />
@@ -85,13 +82,7 @@
             },
         ]"
     >
-        <Button
-            iconOnly
-            variant="secondary"
-            type="button"
-            v-slot="{ iconSizeClasses }"
-            srText="Search"
-        >
+        <Button iconOnly variant="secondary" v-slot="{ iconSizeClasses }" srText="Search">
             <SearchIcon aria-hidden="true" :class="iconSizeClasses" />
         </Button>
 
@@ -103,7 +94,6 @@
         <Button
             iconOnly
             variant="secondary"
-            type="button"
             @click="sidebarState.isOpen = !sidebarState.isOpen"
             v-slot="{ iconSizeClasses }"
             class="md:hidden"
@@ -137,7 +127,7 @@ import Button from '@/components/Button.vue'
 import Logo from '@/components/Logo.vue'
 import Dropdown from '@/components/Dropdown.vue'
 import DropdownLink from '@/components/DropdownLink.vue'
-import { ArrowsInnerIcon } from '@/components/Icons/outline'
+import { ArrowsInnerIcon } from '@/components/icons/outline'
 import userAvatar from '@/assets/images/avatar.jpg'
 
 const { isFullscreen, toggle: toggleFullScreen } = useFullscreen()

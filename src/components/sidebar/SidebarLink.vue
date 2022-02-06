@@ -70,7 +70,7 @@
 
 <script setup>
 import { sidebarState } from '@/composables'
-import { EmptyCircleIcon } from '@/components/Icons/outline'
+import { EmptyCircleIcon } from '@/components/icons/outline'
 
 const props = defineProps({
     href: {

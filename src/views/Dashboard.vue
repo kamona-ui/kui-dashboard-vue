@@ -7,7 +7,7 @@
                     target="_blank"
                     href="https://github.com/kamona-ui/kui-dashboard-vue"
                     variant="black"
-                    class="max-w-sm items-center justify-center gap-2"
+                    class="justify-center max-w-sm gap-2"
                     v-slot="{ iconSizeClasses }"
                 >
                     <GithubIcon aria-hidden="true" :class="iconSizeClasses" />
@@ -83,7 +83,7 @@
 import PageWrapper from '@/components/PageWrapper.vue'
 import Button from '@/components/Button.vue'
 import QuiclStatisticsCard from '@/components/QuiclStatisticsCard.vue'
-import { GithubIcon } from '@/components/Icons/brands'
+import { GithubIcon } from '@/components/icons/brands'
 import { UserGroupIcon, EyeIcon, ShoppingCartIcon, ChartPieIcon } from '@heroicons/vue/outline'
 
 const customersData = [4, 3, 10, 9, 29, 19, 22, 9, 12, 7, 19, 5, 13]
