@@ -1,6 +1,6 @@
 <template>
-    <div class="flex flex-col gap-2 p-4 bg-white rounded-md shadow-md dark:bg-dark-eval-1">
-        <div class="flex items-center justify-between">
+    <BaseCard :actions="actions">
+        <template #header>
             <div class="flex items-center gap-6">
                 <slot name="icon" :sizeClasses="'w-8 h-8 text-purple-500'">
                     <ChartBarIcon aria-hidden="true" class="w-8 h-8 text-purple-500" />
@@ -46,50 +46,7 @@
                     >{{ percentage }}</span>
                 </div>
             </div>
-
-            <!-- Card actions -->
-            <Menu as="div" class="relative">
-                <!-- Trigger -->
-                <MenuButton as="span">
-                    <Button iconOnly size="sm" v-slot="{ iconSizeClasses }" variant="secondary">
-                        <span class="sr-only">Card Actions</span>
-                        <DotsHorizontalIcon aria-hidden="true" :class="iconSizeClasses" />
-                    </Button>
-                </MenuButton>
-
-                <!-- Dropdwon menu -->
-                <transition
-                    enter-active-class="transition duration-100 ease-out"
-                    enter-from-class="transform scale-95 opacity-0"
-                    enter-to-class="transform scale-100 opacity-100"
-                    leave-active-class="transition duration-75 ease-in"
-                    leave-from-class="transform scale-100 opacity-100"
-                    leave-to-class="transform scale-95 opacity-0"
-                >
-                    <MenuItems
-                        class="absolute z-30 right-0 w-40 mt-2 origin-top-right bg-white dark:bg-dark-eval-1 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-                    >
-                        <div class="px-1 py-1">
-                            <slot name="actions">
-                                <MenuItem v-slot="{ active }">
-                                    <router-link
-                                        :class="[
-                                            'block w-full px-4 py-2 text-sm leading-5 text-left  transition duration-150 ease-in-out',
-                                            'focus:outline-none',
-                                            {
-                                                'bg-gray-100 dark:text-white dark:bg-dark-eval-3': active,
-                                                'text-gray-700 dark:text-gray-400': !active,
-                                            }
-                                        ]"
-                                        :to="actionLink"
-                                    >View</router-link>
-                                </MenuItem>
-                            </slot>
-                        </div>
-                    </MenuItems>
-                </transition>
-            </Menu>
-        </div>
+        </template>
 
         <div class="relative grid grid-cols-2 overflow-hidden">
             <div>
@@ -100,15 +57,14 @@
                 <div ref="chartEl"></div>
             </div>
         </div>
-    </div>
+    </BaseCard>
 </template>
 
 <script setup>
 import { onMounted, ref } from 'vue'
+import BaseCard from '@/components/BaseCard.vue'
 import ApexCharts from 'apexcharts'
-import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
-import Button from '@/components/Button.vue'
-import { ChartBarIcon, TrendingUpIcon, TrendingDownIcon, MinusIcon, DotsHorizontalIcon } from '@heroicons/vue/outline'
+import { ChartBarIcon, TrendingUpIcon, TrendingDownIcon, MinusIcon } from '@heroicons/vue/outline'
 
 const chartEl = ref(null)
 
@@ -125,9 +81,9 @@ const props = defineProps({
     percentage: {
         type: [String, Number]
     },
-    actionLink: {
-        type: [String, Object],
-        default: '#'
+    actions: {
+        type: Array,
+        default: []
     },
     chartData: {
         type: [Array, Object],
@@ -237,18 +193,3 @@ onMounted(() => {
     chart.render()
 })
 </script>
-
-<style>
-.apexcharts-canvas {
-    background: transparent !important;
-}
-
-.dark .apexcharts-tooltip.apexcharts-theme-light.apexcharts-active,
-.dark .apexcharts-tooltip.apexcharts-theme-light {
-    background: transparent !important;
-    background-color: rgb(34 39 56) !important;
-    color: #fff !important;
-    border: 1px solid rgb(21 24 35) !important;
-    box-shadow: none !important;
-}
-</style>
