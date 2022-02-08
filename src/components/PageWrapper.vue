@@ -1,8 +1,10 @@
 <template>
     <!-- Page Heading -->
-    <header v-if="$slots.header">
+    <header v-if="$slots.header || title">
         <div class="p-4 sm:p-6">
-            <slot name="header" />
+            <slot name="header">
+                <h2 class="text-xl font-semibold leading-tight">{{ title }}</h2>
+            </slot>
         </div>
     </header>
 
@@ -13,3 +15,9 @@
         </div>
     </main>
 </template>
+
+<script setup>
+const props = defineProps({
+    title: String
+})
+</script>

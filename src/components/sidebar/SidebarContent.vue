@@ -14,6 +14,17 @@
             </template>
         </SidebarLink>
 
+        <SidebarCollapsible title="Pages" :active="isCurrentPath('/pages')">
+            <template #icon>
+                <DocumentIcon class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
+            </template>
+            <SidebarCollapsibleItem
+                :to="{ name: 'Blank' }"
+                title="Blank"
+                :active="isCurrentRoute('Blank')"
+            />
+        </SidebarCollapsible>
+
         <SidebarCollapsible title="Authentication">
             <template #icon>
                 <ShieldCheckIcon class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
@@ -33,11 +44,15 @@ import { useRouter } from 'vue-router'
 import PerfrectScrollbar from '@/components/PerfectScrollbar.vue'
 import SidebarLink from '@/components/sidebar/SidebarLink.vue'
 import { DashboardIcon } from '@/components/icons/outline'
-import { ShieldCheckIcon } from '@heroicons/vue/outline'
+import { ShieldCheckIcon, DocumentIcon } from '@heroicons/vue/outline'
 import SidebarCollapsible from '@/components/sidebar/SidebarCollapsible.vue'
 import SidebarCollapsibleItem from '@/components/sidebar/SidebarCollapsibleItem.vue'
 
 const isCurrentRoute = (routeName) => {
     return useRouter().currentRoute.value.name == routeName
+}
+
+const isCurrentPath = (path) => {
+    return useRouter().currentRoute.value.path.startsWith(path)
 }
 </script>

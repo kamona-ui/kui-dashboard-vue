@@ -63,7 +63,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, toRefs } from 'vue'
 import SidebarLink from '@/components/sidebar/SidebarLink.vue'
 import { EmptyCircleIcon } from '@/components/icons/outline'
 import { sidebarState } from '@/composables'
@@ -80,9 +80,9 @@ const props = defineProps({
     }
 })
 
-const { active } = props
+const { active } = toRefs(props)
 
-const isOpen = ref(active)
+const isOpen = ref(active.value)
 
 const beforeEnter = (el) => {
     el.style.maxHeight = `0px`

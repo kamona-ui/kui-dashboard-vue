@@ -13,6 +13,11 @@ export default [
         name: 'Dashboard',
         component: () => import('@/views/Dashboard.vue'),
       },
+      {
+        path: '/pages/blank',
+        name: 'Blank',
+        component: () => import('@/views/pages/Blank.vue'),
+      },
     ],
   },
   {
