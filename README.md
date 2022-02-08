@@ -10,6 +10,8 @@
 
 ##### [HTML version](https://github.com/kamona-ui/kui-dashboard-html/)
 
+##### [laravel package](https://github.com/Kamona-WD/kui-laravel-breeze/)
+
 ##### To get started:
 
 ```bash
