@@ -1,7 +1,7 @@
 import { defineComponent, onMounted, onUnmounted } from 'vue'
 import { gsap } from 'gsap'
 import Logo from '@/components/Logo.vue'
-import { GithubIcon, FigmaIcon } from '@/components/icons/brands'
+import { GithubIcon } from '@/components/icons/brands'
 import { handleScroll, isDark, scrolling, toggleDarkMode } from '@/composables'
 import { MoonIcon, SunIcon, EyeIcon } from '@heroicons/vue/outline'
 import desktopLight from '@/assets/images/showcase/desktop-light.svg'
@@ -41,7 +41,7 @@ const Navbar = defineComponent({
           </a>
 
           {/* Dark mode button */}
-          <Button onClick={toggleDarkMode} iconSizeClasses iconOnly variant="secondary">
+          <Button onClick={() => { toggleDarkMode() }} iconSizeClasses iconOnly variant="secondary">
             {({ iconSizeClasses }) => (
               <>
                 <MoonIcon v-show={!isDark.value} class={iconSizeClasses} />
@@ -78,20 +78,6 @@ const CTAButtons = defineComponent({
             <>
               <GithubIcon aria-hidden="true" class={iconSizeClasses} />
               <span class="whitespace-nowrap">Github</span>
-            </>
-          )}
-        </Button>
-
-        <Button
-          href="https://www.figma.com/community/file/1019844542917981418"
-          target="_blank"
-          class="w-full justify-center items-center gap-2"
-          variant="info"
-        >
-          {({ iconSizeClasses }) => (
-            <>
-              <FigmaIcon aria-hidden="true" class={iconSizeClasses} />
-              <span class="whitespace-nowrap">Figma File</span>
             </>
           )}
         </Button>
