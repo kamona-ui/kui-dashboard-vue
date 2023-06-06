@@ -1,17 +1,12 @@
 export default [
   {
     path: '/',
-    name: 'Home',
-    component: () => import('@/views/Index'),
-  },
-  {
-    path: '/dashboard',
     component: () => import('@/layouts/DashboardLayout.vue'),
     children: [
       {
-        path: '/dashboard',
+        path: '/',
         name: 'Dashboard',
-        component: () => import('@/views/Dashboard.vue'),
+        component: () => import('@/views/Index.vue'),
       },
       {
         path: '/pages/blank',

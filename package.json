@@ -20,7 +20,7 @@
     "@heroicons/vue": "^1.0.6",
     "@vueuse/core": "^8.9.0",
     "apexcharts": "^3.35.3",
-    "gsap": "^3.10.4",
+    "gsap": "^3.11.5",
     "nprogress": "^0.2.0",
     "perfect-scrollbar": "^1.5.5",
     "vue": "^3.2.37",

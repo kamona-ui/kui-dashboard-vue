@@ -24,8 +24,5 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/forms'),
-
-    // TODO: use `https://github.com/Kamona-WD/tailwindcss-perspective` package when it support tailwindcss v3.
-    require('./tailwindcss-perspective'),
   ],
 }
