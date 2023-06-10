@@ -1,9 +1,3 @@
-<template>
-    <component :is="tagname" ref="el" @mouseover.once="update">
-        <slot />
-    </component>
-</template>
-
 <script setup>
 import { onMounted, onUnmounted, ref } from 'vue'
 import PerfectScrollbar from 'perfect-scrollbar'
@@ -39,6 +33,12 @@ onUnmounted(() => {
     ps.destroy()
 })
 </script>
+
+<template>
+    <component :is="tagname" ref="el" @mouseover.once="update">
+        <slot />
+    </component>
+</template>
 
 <style>
 @import "perfect-scrollbar/css/perfect-scrollbar.css";

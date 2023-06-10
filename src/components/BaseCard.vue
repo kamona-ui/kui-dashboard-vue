@@ -1,3 +1,27 @@
+<script setup>
+import Button from '@/components/Button.vue'
+import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
+
+defineProps({
+    noHeader: {
+        type: Boolean,
+        default: false,
+    },
+
+    bgClasses: {
+        type: String,
+        default: 'bg-white dark:bg-dark-eval-1',
+    },
+
+    title: String,
+
+    actions: {
+        type: Array,
+        default: [],
+    },
+})
+</script>
+
 <template>
     <div :class="['p-4 rounded-md shadow-md', bgClasses]">
         <!-- Card header -->
@@ -10,9 +34,13 @@
             <Menu as="div" class="relative" v-if="actions.length">
                 <!-- Trigger -->
                 <MenuButton as="span">
-                    <Button iconOnly size="sm" v-slot="{ iconSizeClasses }" variant="secondary">
-                        <span class="sr-only">Card Actions</span>
-                        <DotsHorizontalIcon aria-hidden="true" :class="iconSizeClasses" />
+                    <Button
+                        sr-text="Card Actions"
+                        icon="mdi:dots-horizontal"
+                        icon-only
+                        size="sm"
+                        variant="secondary"
+                    >
                     </Button>
                 </MenuButton>
 
@@ -39,12 +67,15 @@
                                         'block w-full px-4 py-2 text-sm leading-5 text-left  transition duration-150 ease-in-out',
                                         'focus:outline-none',
                                         {
-                                            'bg-gray-100 dark:text-white dark:bg-dark-eval-3': active,
-                                            'text-gray-700 dark:text-gray-400': !active,
-                                        }
+                                            'bg-gray-100 dark:text-white dark:bg-dark-eval-3':
+                                                active,
+                                            'text-gray-700 dark:text-gray-400':
+                                                !active,
+                                        },
                                     ]"
                                     :to="to"
-                                >{{ title }}</router-link>
+                                    >{{ title }}</router-link
+                                >
                             </MenuItem>
                         </div>
                     </MenuItems>
@@ -56,28 +87,3 @@
         <slot />
     </div>
 </template>
-
-<script setup>
-import Button from '@/components/Button.vue'
-import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
-import { DotsHorizontalIcon } from '@heroicons/vue/outline'
-
-const props = defineProps({
-    noHeader: {
-        type: Boolean,
-        default: false
-    },
-
-    bgClasses: {
-        type: String,
-        default: 'bg-white dark:bg-dark-eval-1'
-    },
-
-    title: String,
-
-    actions: {
-        type: Array,
-        default: []
-    }
-})
-</script>

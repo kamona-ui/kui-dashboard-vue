@@ -1,3 +1,15 @@
+<script setup>
+defineProps({
+    href: String,
+    to: [String, Object],
+    title: String,
+    active: {
+        type: Boolean,
+        default: false,
+    }
+})
+</script>
+
 <template>
     <li
         :class="[
@@ -33,16 +45,3 @@
         >{{ title }}</router-link>
     </li>
 </template>
-
-<script setup>
-
-const props = defineProps({
-    href: String,
-    to: [String, Object],
-    title: String,
-    active: {
-        type: Boolean,
-        default: false,
-    }
-})
-</script>

@@ -1,13 +1,29 @@
+<script setup>
+import { reactive } from 'vue'
+import InputIconWrapper from '@/components/InputIconWrapper.vue'
+import Label from '@/components/Label.vue'
+import Input from '@/components/Input.vue'
+import Checkbox from '@/components/Checkbox.vue'
+import Button from '@/components/Button.vue'
+
+const loginForm = reactive({
+    email: '',
+    password: '',
+    remember: false,
+    processing: false,
+})
+
+const login = () => {}
+</script>
+
 <template>
     <form @submit.prevent="login">
         <div class="grid gap-6">
             <!-- Email input -->
             <div class="space-y-2">
                 <Label for="email" value="Email" />
-                <InputIconWrapper>
-                    <template #icon>
-                        <MailIcon aria-hidden="true" class="w-5 h-5" />
-                    </template>
+
+                <InputIconWrapper icon="mdi:email-outline">
                     <Input
                         withIcon
                         id="email"
@@ -25,10 +41,8 @@
             <!-- Password input -->
             <div class="space-y-2">
                 <Label for="password" value="Password" />
-                <InputIconWrapper>
-                    <template #icon>
-                        <LockClosedIcon aria-hidden="true" class="w-5 h-5" />
-                    </template>
+
+                <InputIconWrapper icon="mdi:lock-outline">
                     <Input
                         withIcon
                         id="password"
@@ -45,14 +59,19 @@
             <!-- Remember me -->
             <div class="flex items-center justify-between">
                 <label class="flex items-center">
-                    <Checkbox name="remember" v-model:checked="loginForm.remember" />
+                    <Checkbox
+                        name="remember"
+                        v-model:checked="loginForm.remember"
+                    />
                     <span class="ml-2 text-sm text-gray-600">Remember me</span>
                 </label>
 
                 <router-link
                     :to="{ name: 'ForgotPassword' }"
                     class="text-sm text-blue-500 hover:underline"
-                >Forgot your password?</router-link>
+                >
+                    Forgot your password?
+                </router-link>
             </div>
 
             <!-- Login button -->
@@ -61,9 +80,8 @@
                     type="submit"
                     class="justify-center w-full gap-2"
                     :disabled="loginForm.processing"
-                    v-slot="{ iconSizeClasses }"
+                    left-icon="mdi:login"
                 >
-                    <LoginIcon aria-hidden="true" :class="iconSizeClasses" />
                     <span>Log in</span>
                 </Button>
             </div>
@@ -74,27 +92,10 @@
                 <router-link
                     :to="{ name: 'Register' }"
                     class="text-blue-500 hover:underline"
-                >Register</router-link>
+                >
+                    Register
+                </router-link>
             </p>
         </div>
     </form>
 </template>
-
-<script setup>
-import { reactive } from 'vue'
-import InputIconWrapper from '@/components/InputIconWrapper.vue'
-import Label from '@/components/Label.vue'
-import Input from '@/components/Input.vue'
-import Checkbox from '@/components/Checkbox.vue'
-import Button from '@/components/Button.vue'
-import { MailIcon, LockClosedIcon, LoginIcon } from '@heroicons/vue/outline'
-
-const loginForm = reactive({
-    email: '',
-    password: '',
-    remember: false,
-    processing: false
-})
-
-const login = () => { }
-</script>

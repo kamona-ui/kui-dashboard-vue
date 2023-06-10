@@ -1,3 +1,19 @@
+<script setup>
+import { onMounted, onUnmounted } from 'vue'
+import { sidebarState } from '@/composables'
+import SidebarHeader from '@/components/sidebar/SidebarHeader.vue'
+import SidebarContent from '@/components/sidebar/SidebarContent.vue'
+import SidebarFooter from '@/components/sidebar/SidebarFooter.vue'
+
+onMounted(() => {
+    window.addEventListener('resize', sidebarState.handleWindowResize)
+
+    onUnmounted(() => {
+        window.removeEventListener('resize', sidebarState.handleWindowResize)
+    })
+})
+</script>
+
 <template>
     <transition
         enter-active-class="transition"
@@ -36,15 +52,3 @@
         <SidebarFooter />
     </aside>
 </template>
-
-<script setup>
-import { onMounted } from 'vue'
-import { sidebarState } from '@/composables'
-import SidebarHeader from '@/components/sidebar/SidebarHeader.vue'
-import SidebarContent from '@/components/sidebar/SidebarContent.vue'
-import SidebarFooter from '@/components/sidebar/SidebarFooter.vue'
-
-onMounted(() => {
-    window.addEventListener('resize', sidebarState.handleWindowResize)
-})
-</script>

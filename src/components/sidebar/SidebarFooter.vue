@@ -1,30 +1,17 @@
+<script setup>
+import Button from '@/components/Button.vue'
+import { sidebarState } from '@/composables'
+</script>
+
 <template>
     <div class="flex-shrink-0 px-3 lg:hidden">
         <Button
-            iconOnly
+            icon-only
             variant="secondary"
-            v-slot="{ iconSizeClasses }"
             v-show="!sidebarState.isOpen"
             @click="sidebarState.isOpen = !sidebarState.isOpen"
-            :srText="sidebarState.isOpen ? 'Close sidebar' : 'Open sidebar'"
-        >
-            <MenuFoldLineLeftIcon
-                aria-hidden="true"
-                v-show="sidebarState.isOpen"
-                :class="[iconSizeClasses]"
-            />
-
-            <MenuFoldLineRightIcon
-                aria-hidden="true"
-                v-show="!sidebarState.isOpen"
-                :class="[iconSizeClasses]"
-            />
-        </Button>
+            sr-text="Open sidebar"
+            icon="mdi:menu-close"
+        />
     </div>
 </template>
-
-<script setup>
-import Button from '@/components/Button.vue'
-import { MenuFoldLineLeftIcon, MenuFoldLineRightIcon } from '@/components/icons/outline'
-import { sidebarState } from '@/composables'
-</script>

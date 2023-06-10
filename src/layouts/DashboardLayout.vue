@@ -1,3 +1,10 @@
+<script setup>
+import { sidebarState } from '@/composables'
+import Sidebar from '@/components/sidebar/Sidebar.vue'
+import Navbar from '@/components/Navbar.vue'
+import PageFooter from '@/components/PageFooter.vue'
+</script>
+
 <template>
     <div class="min-h-screen text-gray-900 bg-gray-100 dark:bg-dark-bg dark:text-gray-100">
         <Sidebar />
@@ -20,10 +27,3 @@
         </div>
     </div>
 </template>
-
-<script setup>
-import { sidebarState } from '@/composables'
-import Sidebar from '@/components/sidebar/Sidebar.vue'
-import Navbar from '@/components/Navbar.vue'
-import PageFooter from '@/components/PageFooter.vue'
-</script>

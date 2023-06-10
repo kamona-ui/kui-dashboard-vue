@@ -1,12 +1,35 @@
+<script setup>
+import { reactive } from 'vue'
+import InputIconWrapper from '@/components/InputIconWrapper.vue'
+import Button from '@/components/Button.vue'
+import Input from '@/components/Input.vue'
+import Label from '@/components/Label.vue'
+
+const props = defineProps({
+    email: String,
+    token: String,
+})
+
+const resetPasswordForm = reactive({
+    token: '',
+    email: '',
+    password: '',
+    password_confirmation: '',
+    processing: false,
+})
+
+const submit = () => {
+    //
+}
+</script>
+
 <template>
     <form @submit.prevent="submit">
         <div class="grid gap-4">
             <div class="space-y-2">
                 <Label for="email" value="Email" />
-                <InputIconWrapper>
-                    <template #icon>
-                        <MailIcon aria-hidden="true" class="w-5 h-5" />
-                    </template>
+
+                <InputIconWrapper icon="mdi:email-outline">
                     <Input
                         withIcon
                         id="email"
@@ -23,10 +46,8 @@
 
             <div class="space-y-2">
                 <Label for="password" value="Password" />
-                <InputIconWrapper>
-                    <template #icon>
-                        <LockClosedIcon aria-hidden="true" class="w-5 h-5" />
-                    </template>
+
+                <InputIconWrapper icon="mdi:lock-outline">
                     <Input
                         withIcon
                         id="password"
@@ -42,10 +63,8 @@
 
             <div class="space-y-2">
                 <Label for="password_confirmation" value="Confirm Password" />
-                <InputIconWrapper>
-                    <template #icon>
-                        <LockClosedIcon aria-hidden="true" class="w-5 h-5" />
-                    </template>
+
+                <InputIconWrapper icon="mdi:lock-outline">
                     <Input
                         withIcon
                         id="password_confirmation"
@@ -64,34 +83,10 @@
                     type="submit"
                     class="justify-center w-full"
                     :disabled="resetPasswordForm.processing"
-                >Reset Password</Button>
+                >
+                    Reset Password
+                </Button>
             </div>
         </div>
     </form>
 </template>
-
-<script setup>
-import { reactive } from 'vue'
-import InputIconWrapper from '@/components/InputIconWrapper.vue'
-import Button from '@/components/Button.vue'
-import Input from '@/components/Input.vue'
-import Label from '@/components/Label.vue'
-import { MailIcon, LockClosedIcon } from '@heroicons/vue/outline'
-
-const props = defineProps({
-    email: String,
-    token: String,
-})
-
-const resetPasswordForm = reactive({
-    token: '',
-    email: '',
-    password: '',
-    password_confirmation: '',
-    processing: false
-})
-
-const submit = () => {
-    // 
-}
-</script>

@@ -1,70 +1,8 @@
-<template>
-    <BaseCard :actions="actions">
-        <template #header>
-            <div class="flex items-center gap-6">
-                <slot name="icon" :sizeClasses="'w-8 h-8 text-purple-500'">
-                    <ChartBarIcon aria-hidden="true" class="w-8 h-8 text-purple-500" />
-                </slot>
-
-                <div class="flex items-center gap-2">
-                    <span
-                        :class="[
-                            'p-0.5 block rounded-full',
-                            {
-                                'bg-green-100 dark:bg-green-800': status == 'success',
-                                'bg-yellow-100 dark:bg-yellow-800': status == 'warning',
-                                'bg-red-100 dark:bg-red-800': status == 'danger',
-                            }
-                        ]"
-                    >
-                        <TrendingUpIcon
-                            v-if="status == 'success'"
-                            aria-hidden="true"
-                            class="w-4 h-4 text-green-500 dark:text-green-200"
-                        />
-                        <MinusIcon
-                            v-if="status == 'warning'"
-                            aria-hidden="true"
-                            class="w-4 h-4 text-yellow-500 dark:text-yellow-200"
-                        />
-                        <TrendingDownIcon
-                            v-if="status == 'danger'"
-                            aria-hidden="true"
-                            class="w-4 h-4 text-red-500 dark:text-red-200"
-                        />
-                    </span>
-
-                    <span
-                        :class="[
-                            'text-xs font-medium',
-                            {
-                                'text-green-500': status == 'success',
-                                'text-yellow-500': status == 'warning',
-                                'text-red-500': status == 'danger',
-                            }
-                        ]"
-                    >{{ percentage }}</span>
-                </div>
-            </div>
-        </template>
-
-        <div class="relative grid grid-cols-2 overflow-hidden">
-            <div>
-                <h4 class="text-3xl font-semibold">{{ result }}</h4>
-                <p class="text-base font-medium text-gray-500">{{ title }}</p>
-            </div>
-            <div class="relative flex items-center max-h-16">
-                <div ref="chartEl"></div>
-            </div>
-        </div>
-    </BaseCard>
-</template>
-
 <script setup>
 import { onMounted, ref } from 'vue'
 import BaseCard from '@/components/BaseCard.vue'
 import ApexCharts from 'apexcharts'
-import { ChartBarIcon, TrendingUpIcon, TrendingDownIcon, MinusIcon } from '@heroicons/vue/outline'
+import { Icon } from '@iconify/vue'
 
 const chartEl = ref(null)
 
@@ -76,14 +14,14 @@ const props = defineProps({
         default: 'success',
         validator(value) {
             return ['success', 'warning', 'danger'].includes(value)
-        }
+        },
     },
     percentage: {
-        type: [String, Number]
+        type: [String, Number],
     },
     actions: {
         type: Array,
-        default: []
+        default: [],
     },
     chartData: {
         type: [Array, Object],
@@ -91,9 +29,35 @@ const props = defineProps({
             data: [],
             categories: [],
         }),
-    }
+    },
+    icon: {
+        type: String,
+        default: 'mdi:chart-bar',
+    },
 })
 
+let statusIcon
+let statusIconClasses
+
+switch (props.status) {
+    case 'success':
+        statusIcon = 'mdi:trending-up'
+        statusIconClasses = 'w-4 h-4 text-green-500 dark:text-green-200'
+        break
+    case 'warning':
+        statusIcon = 'mdi:trending-neutral'
+        statusIconClasses = 'w-4 h-4 text-yellow-500 dark:text-yellow-200'
+        break
+    case 'danger':
+        statusIcon = 'mdi:trending-down'
+        statusIconClasses = 'w-4 h-4 text-red-500 dark:text-red-200'
+        break
+
+    default:
+        statusIcon = 'mdi:trending-up'
+        statusIconClasses = 'w-4 h-4 text-green-500 dark:text-green-200'
+        break
+}
 onMounted(() => {
     let chart = new ApexCharts(chartEl.value, {
         series: [
@@ -193,3 +157,61 @@ onMounted(() => {
     chart.render()
 })
 </script>
+
+<template>
+    <BaseCard :actions="actions">
+        <template #header>
+            <div class="flex items-center gap-6">
+                <Icon
+                    :icon="icon"
+                    aria-hidden="true"
+                    class="w-8 h-8 text-purple-500"
+                />
+
+                <div class="flex items-center gap-2">
+                    <span
+                        :class="[
+                            'p-0.5 block rounded-full',
+                            {
+                                'bg-green-100 dark:bg-green-800':
+                                    status == 'success',
+                                'bg-yellow-100 dark:bg-yellow-800':
+                                    status == 'warning',
+                                'bg-red-100 dark:bg-red-800':
+                                    status == 'danger',
+                            },
+                        ]"
+                    >
+                        <Icon
+                            :icon="statusIcon"
+                            :class="statusIconClasses"
+                            aria-hidden="true"
+                        />
+                    </span>
+
+                    <span
+                        :class="[
+                            'text-xs font-medium',
+                            {
+                                'text-green-500': status == 'success',
+                                'text-yellow-500': status == 'warning',
+                                'text-red-500': status == 'danger',
+                            },
+                        ]"
+                        >{{ percentage }}</span
+                    >
+                </div>
+            </div>
+        </template>
+
+        <div class="relative grid grid-cols-2 overflow-hidden">
+            <div>
+                <h4 class="text-3xl font-semibold">{{ result }}</h4>
+                <p class="text-base font-medium text-gray-500">{{ title }}</p>
+            </div>
+            <div class="relative flex items-center max-h-16">
+                <div ref="chartEl"></div>
+            </div>
+        </div>
+    </BaseCard>
+</template>

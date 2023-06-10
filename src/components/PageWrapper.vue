@@ -1,3 +1,9 @@
+<script setup>
+defineProps({
+    title: String,
+})
+</script>
+
 <template>
     <!-- Page Heading -->
     <header v-if="$slots.header || title">
@@ -15,9 +21,3 @@
         </div>
     </main>
 </template>
-
-<script setup>
-const props = defineProps({
-    title: String
-})
-</script>

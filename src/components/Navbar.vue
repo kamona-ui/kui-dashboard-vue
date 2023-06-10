@@ -1,3 +1,31 @@
+<script setup>
+import { onMounted, onUnmounted } from 'vue'
+import { useFullscreen } from '@vueuse/core'
+import { Icon } from '@iconify/vue'
+import {
+    handleScroll,
+    isDark,
+    scrolling,
+    toggleDarkMode,
+    sidebarState,
+} from '@/composables'
+import Button from '@/components/Button.vue'
+import Logo from '@/components/Logo.vue'
+import Dropdown from '@/components/Dropdown.vue'
+import DropdownLink from '@/components/DropdownLink.vue'
+import userAvatar from '@/assets/images/avatar.jpg'
+
+const { isFullscreen, toggle: toggleFullScreen } = useFullscreen()
+
+onMounted(() => {
+    document.addEventListener('scroll', handleScroll)
+})
+
+onUnmounted(() => {
+    document.removeEventListener('scroll', handleScroll)
+})
+</script>
+
 <template>
     <nav
         aria-label="secondary"
@@ -11,15 +39,15 @@
     >
         <div class="flex items-center gap-2">
             <Button
-                iconOnly
+                icon-only
                 variant="secondary"
                 @click="toggleDarkMode"
                 v-slot="{ iconSizeClasses }"
                 class="md:hidden"
                 srText="Toggle dark mode"
             >
-                <MoonIcon v-show="!isDark" aria-hidden="true" :class="iconSizeClasses" />
-                <SunIcon v-show="isDark" aria-hidden="true" :class="iconSizeClasses" />
+                <Icon icon="mdi:weather-night" v-show="!isDark" aria-hidden="true" :class="iconSizeClasses" />
+                <Icon icon="mdi:white-balance-sunny" v-show="isDark" aria-hidden="true" :class="iconSizeClasses" />
             </Button>
         </div>
 
@@ -32,8 +60,8 @@
                 class="hidden md:inline-flex"
                 srText="Toggle dark mode"
             >
-                <MoonIcon v-show="!isDark" aria-hidden="true" :class="iconSizeClasses" />
-                <SunIcon v-show="isDark" aria-hidden="true" :class="iconSizeClasses" />
+                <Icon icon="mdi:weather-night" v-show="!isDark" aria-hidden="true" :class="iconSizeClasses" />
+                <Icon icon="mdi:white-balance-sunny" v-show="isDark" aria-hidden="true" :class="iconSizeClasses" />
             </Button>
 
             <Button
@@ -44,12 +72,13 @@
                 class="hidden md:inline-flex"
                 srText="Toggle dark mode"
             >
-                <ArrowsExpandIcon
+                <Icon
+                    icon="mdi:arrow-expand-all"
                     v-show="!isFullscreen"
                     aria-hidden="true"
                     :class="iconSizeClasses"
                 />
-                <ArrowsInnerIcon v-show="isFullscreen" aria-hidden="true" :class="iconSizeClasses" />
+                <Icon icon="mdi:arrow-collapse-all" v-show="isFullscreen" aria-hidden="true" :class="iconSizeClasses" />
             </Button>
 
             <!-- Dropdwon -->
@@ -82,9 +111,7 @@
             },
         ]"
     >
-        <Button iconOnly variant="secondary" v-slot="{ iconSizeClasses }" srText="Search">
-            <SearchIcon aria-hidden="true" :class="iconSizeClasses" />
-        </Button>
+        <Button icon="mdi:magnify" iconOnly variant="secondary" srText="Search" />
 
         <router-link :to="{ name: 'Dashboard' }">
             <Logo class="w-10 h-10" />
@@ -97,46 +124,10 @@
             @click="sidebarState.isOpen = !sidebarState.isOpen"
             v-slot="{ iconSizeClasses }"
             class="md:hidden"
-            srText="Search"
+            srText="toggle menu"
         >
-            <MenuIcon v-show="!sidebarState.isOpen" aria-hidden="true" :class="iconSizeClasses" />
-            <XIcon v-show="sidebarState.isOpen" aria-hidden="true" :class="iconSizeClasses" />
+            <Icon icon="mdi:menu" v-show="!sidebarState.isOpen" aria-hidden="true" :class="iconSizeClasses" />
+            <Icon icon="mdi:window-close" v-show="sidebarState.isOpen" aria-hidden="true" :class="iconSizeClasses" />
         </Button>
     </div>
 </template>
-
-<script setup>
-import { onMounted, onUnmounted } from 'vue'
-import { useFullscreen } from '@vueuse/core'
-import {
-    SunIcon,
-    MoonIcon,
-    SearchIcon,
-    MenuIcon,
-    XIcon,
-    ArrowsExpandIcon
-} from '@heroicons/vue/outline'
-import {
-    handleScroll,
-    isDark,
-    scrolling,
-    toggleDarkMode,
-    sidebarState,
-} from '@/composables'
-import Button from '@/components/Button.vue'
-import Logo from '@/components/Logo.vue'
-import Dropdown from '@/components/Dropdown.vue'
-import DropdownLink from '@/components/DropdownLink.vue'
-import { ArrowsInnerIcon } from '@/components/icons/outline'
-import userAvatar from '@/assets/images/avatar.jpg'
-
-const { isFullscreen, toggle: toggleFullScreen } = useFullscreen()
-
-onMounted(() => {
-    document.addEventListener('scroll', handleScroll)
-})
-
-onUnmounted(() => {
-    document.removeEventListener('scroll', handleScroll)
-})
-</script>

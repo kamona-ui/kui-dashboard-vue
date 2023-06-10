@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import { CheckIcon, XIcon, ExclamationIcon, QuestionMarkCircleIcon } from '@heroicons/vue/outline'
+import { Icon } from '@iconify/vue'
 import '@/toast/style.css'
 import Button from '@/components/Button.vue'
 
@@ -61,23 +61,23 @@ export default defineComponent({
       },
     ]
 
-    let Icon
+    let icon
 
     switch (variant) {
       case 'primary':
-        Icon = CheckIcon
+        icon = 'mdi:check'
         break
       case 'success':
-        Icon = CheckIcon
+        icon = 'mdi:check'
         break
       case 'warning':
-        Icon = ExclamationIcon
+        icon = 'mdi:exclamation'
         break
       case 'error':
-        Icon = XIcon
+        icon = 'mdi:close'
         break
       case 'info':
-        Icon = QuestionMarkCircleIcon
+        icon = 'mdi:help'
         break
     }
 
@@ -90,7 +90,7 @@ export default defineComponent({
         <div class={['relative p-4 rounded-md shadow-lg dark:bg-dark-eval-3', toastBackgroundClass]}>
           <div class="flex items-start gap-4">
             <span class={['inline-flex p-1 rounded-full', iconBackgroundClass]}>
-              <Icon aria-hidden="true" class="w-6 h-6 text-white" />
+              <Icon icon={icon} aria-hidden="true" class="w-6 h-6 text-white" />
             </span>
 
             <Button
@@ -100,13 +100,8 @@ export default defineComponent({
               variant="secondary"
               srText="Close notification"
               class="absolute right-2 top-2"
-            >
-              {({ iconSizeClasses }) => (
-                <>
-                  <XIcon aria-hidden="true" class={iconSizeClasses} />
-                </>
-              )}
-            </Button>
+              icon="mdi:window-close"
+            ></Button>
 
             <div class="space-y-2">
               <div class={textVariantClass}>{title}</div>

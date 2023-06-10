@@ -1,13 +1,31 @@
+<script setup>
+import { reactive } from 'vue'
+import InputIconWrapper from '@/components/InputIconWrapper.vue'
+import Label from '@/components/Label.vue'
+import Input from '@/components/Input.vue'
+import Checkbox from '@/components/Checkbox.vue'
+import Button from '@/components/Button.vue'
+
+const registerForm = reactive({
+    name: '',
+    email: '',
+    password: '',
+    password_confirmation: '',
+    terms: false,
+    processing: false,
+})
+
+const register = () => {}
+</script>
+
 <template>
     <form @submit.prevent="register">
         <div class="grid gap-6">
             <!-- Name input -->
             <div class="space-y-2">
                 <Label for="name" value="Name" />
-                <InputIconWrapper>
-                    <template #icon>
-                        <UserIcon aria-hidden="true" class="w-5 h-5" />
-                    </template>
+
+                <InputIconWrapper icon="mdi:account-outline">
                     <Input
                         withIcon
                         id="name"
@@ -25,10 +43,8 @@
             <!-- Email input -->
             <div class="space-y-2">
                 <Label for="email" value="Email" />
-                <InputIconWrapper>
-                    <template #icon>
-                        <MailIcon aria-hidden="true" class="w-5 h-5" />
-                    </template>
+
+                <InputIconWrapper icon="mdi:email-outline">
                     <Input
                         withIcon
                         id="email"
@@ -45,10 +61,8 @@
             <!-- Password input -->
             <div class="space-y-2">
                 <Label for="password" value="Password" />
-                <InputIconWrapper>
-                    <template #icon>
-                        <LockClosedIcon aria-hidden="true" class="w-5 h-5" />
-                    </template>
+
+                <InputIconWrapper icon="mdi:lock-outline">
                     <Input
                         withIcon
                         id="password"
@@ -65,10 +79,8 @@
             <!-- Password confirmation input -->
             <div class="space-y-2">
                 <Label for="password_confirmation" value="Confirm Password" />
-                <InputIconWrapper>
-                    <template #icon>
-                        <LockClosedIcon aria-hidden="true" class="w-5 h-5" />
-                    </template>
+
+                <InputIconWrapper icon="mdi:lock-outline">
                     <Input
                         withIcon
                         id="password_confirmation"
@@ -86,7 +98,11 @@
             <div>
                 <Label for="terms">
                     <div class="flex items-center">
-                        <Checkbox name="terms" id="terms" v-model:checked="registerForm.terms" />
+                        <Checkbox
+                            name="terms"
+                            id="terms"
+                            v-model:checked="registerForm.terms"
+                        />
 
                         <div class="ml-2">
                             I agree to the
@@ -94,12 +110,17 @@
                                 target="_blank"
                                 href="#"
                                 class="text-sm text-blue-600 underline hover:text-blue-900"
-                            >Terms of Service</a> and
+                            >
+                                Terms of Service
+                            </a>
+                            and
                             <a
                                 target="_blank"
                                 href="#"
                                 class="text-sm text-blue-600 underline hover:text-blue-900"
-                            >Privacy Policy</a>
+                            >
+                                Privacy Policy
+                            </a>
                         </div>
                     </div>
                 </Label>
@@ -111,9 +132,8 @@
                     type="submit"
                     class="justify-center w-full gap-2"
                     :disabled="registerForm.processing"
-                    v-slot="{ iconSizeClasses }"
+                    left-icon="mdi:account-plus-outline"
                 >
-                    <UserAddIcon aria-hidden="true" :class="iconSizeClasses" />
                     <span>Register</span>
                 </Button>
             </div>
@@ -121,29 +141,13 @@
             <!-- Login link -->
             <p class="text-sm text-gray-600 dark:text-gray-400">
                 Already have an account?
-                <router-link :to="{ name: 'Login' }" class="text-blue-500 hover:underline">Login</router-link>
+                <router-link
+                    :to="{ name: 'Login' }"
+                    class="text-blue-500 hover:underline"
+                >
+                    Login
+                </router-link>
             </p>
         </div>
     </form>
 </template>
-
-<script setup>
-import { reactive } from 'vue'
-import InputIconWrapper from '@/components/InputIconWrapper.vue'
-import Label from '@/components/Label.vue'
-import Input from '@/components/Input.vue'
-import Checkbox from '@/components/Checkbox.vue'
-import Button from '@/components/Button.vue'
-import { UserIcon, MailIcon, LockClosedIcon, UserAddIcon } from '@heroicons/vue/outline'
-
-const registerForm = reactive({
-    name: '',
-    email: '',
-    password: '',
-    password_confirmation: '',
-    terms: false,
-    processing: false,
-})
-
-const register = () => { }
-</script>

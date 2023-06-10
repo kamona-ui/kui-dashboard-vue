@@ -1,3 +1,7 @@
+<script setup>
+import { Icon } from '@iconify/vue'
+</script>
+
 <template>
     <footer
         class="flex flex-col flex-shrink-0 w-full gap-2 px-6 py-4 lg:flex-row lg:justify-between"
@@ -11,18 +15,16 @@
             <span>Hand-crafted & Made with</span>
             <span>
                 <span class="sr-only">love</span>
-                <HeartIcon aria-hidden="true" class="w-6 h-6 text-red-500" />
+                <Icon icon="mdi:heart" aria-hidden="true" class="w-6 h-6 text-red-500" />
             </span>
             <span>by</span>
             <a
                 href="https://github.com/Kamona-WD"
                 target="_blank"
                 class="text-blue-600 hover:underline"
-            >Ahmed Kamel</a>
+            >
+                Ahmed Kamel
+            </a>
         </p>
     </footer>
 </template>
-
-<script setup>
-import { HeartIcon } from '@heroicons/vue/solid'
-</script>

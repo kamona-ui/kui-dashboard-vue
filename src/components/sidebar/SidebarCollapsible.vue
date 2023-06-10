@@ -1,12 +1,50 @@
+<script setup>
+import { ref, toRefs } from 'vue'
+import SidebarLink from '@/components/sidebar/SidebarLink.vue'
+import { sidebarState } from '@/composables'
+
+const props = defineProps({
+    title: {
+        type: String,
+    },
+    icon: {
+        type: String,
+        default: 'mdi:circle-outline',
+    },
+    active: {
+        type: Boolean,
+    },
+})
+
+const { active } = toRefs(props)
+
+const isOpen = ref(active.value)
+
+const beforeEnter = (el) => {
+    el.style.maxHeight = `0px`
+}
+
+const enter = (el) => {
+    el.style.maxHeight = `${el.scrollHeight}px`
+}
+
+const beforeLeave = (el) => {
+    el.style.maxHeight = `${el.scrollHeight}px`
+}
+
+const leave = (el) => {
+    el.style.maxHeight = `0px`
+}
+</script>
+
 <template>
     <div class="relative">
-        <SidebarLink @click="isOpen = !isOpen" :title="title" :active="active">
-            <template #icon>
-                <slot name="icon">
-                    <EmptyCircleIcon aria-hidden="true" class="flex-shrink-0 w-6 h-6" />
-                </slot>
-            </template>
-
+        <SidebarLink
+            :icon="icon"
+            @click="isOpen = !isOpen"
+            :title="title"
+            :active="active"
+        >
             <template #arrow>
                 <span
                     v-show="sidebarState.isOpen || sidebarState.isHovered"
@@ -61,42 +99,3 @@
         </transition>
     </div>
 </template>
-
-<script setup>
-import { ref, toRefs } from 'vue'
-import SidebarLink from '@/components/sidebar/SidebarLink.vue'
-import { EmptyCircleIcon } from '@/components/icons/outline'
-import { sidebarState } from '@/composables'
-
-const props = defineProps({
-    title: {
-        type: String,
-    },
-    icon: {
-        required: false,
-    },
-    active: {
-        type: Boolean,
-    }
-})
-
-const { active } = toRefs(props)
-
-const isOpen = ref(active.value)
-
-const beforeEnter = (el) => {
-    el.style.maxHeight = `0px`
-}
-
-const enter = (el) => {
-    el.style.maxHeight = `${el.scrollHeight}px`
-}
-
-const beforeLeave = (el) => {
-    el.style.maxHeight = `${el.scrollHeight}px`
-}
-
-const leave = (el) => {
-    el.style.maxHeight = `0px`
-}
-</script>
