@@ -2,4 +2,3 @@ src/assets
 src/css
 src/stories
 **/*.html
-**/*.vue

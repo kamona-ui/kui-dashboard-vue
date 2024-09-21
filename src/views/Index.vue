@@ -9,7 +9,9 @@ import Button from '@/components/Button.vue'
 <template>
     <PageWrapper>
         <template #header>
-            <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div
+                class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between"
+            >
                 <h2 class="text-xl font-semibold leading-tight">Dashboard</h2>
 
                 <Button

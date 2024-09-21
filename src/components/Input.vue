@@ -6,7 +6,7 @@ const props = defineProps({
     withIcon: {
         type: Boolean,
         default: false,
-    }
+    },
 })
 
 const input = ref(null)

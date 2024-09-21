@@ -6,7 +6,9 @@ import PageFooter from '@/components/PageFooter.vue'
 </script>
 
 <template>
-    <div class="min-h-screen text-gray-900 bg-gray-100 dark:bg-dark-bg dark:text-gray-100">
+    <div
+        class="min-h-screen text-gray-900 bg-gray-100 dark:bg-dark-eval-0 dark:text-gray-100"
+    >
         <Sidebar />
 
         <div

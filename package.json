@@ -1,6 +1,7 @@
 {
   "name": "kui-dashboard-vue",
   "version": "0.1.0",
+  "type": "module",
   "description": "Admin dashboard template built with tailwindcss & vuejs.",
   "license": "MIT",
   "homepage": "https://github.com/kamona-ui/kui-dashboard-vue",
@@ -36,8 +37,7 @@
     "gh-pages": "^4.0.0",
     "postcss": "^8.4.47",
     "prettier": "^3.3.3",
-    "tailwind": "^4.0.0",
-    "tailwindcss": "^3.1.4",
+    "tailwindcss": "^3.4.12",
     "vite": "^5.4.7"
   }
 }

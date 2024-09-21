@@ -6,7 +6,7 @@ defineProps({
     active: {
         type: Boolean,
         default: false,
-    }
+    },
 })
 </script>
 
@@ -30,7 +30,8 @@ defineProps({
                     'text-gray-500 dark:text-gray-400': !active,
                 },
             ]"
-        >{{ title }}</a>
+            >{{ title }}</a
+        >
         <router-link
             v-if="to"
             :to="to"
@@ -42,6 +43,7 @@ defineProps({
                     'text-gray-500 dark:text-gray-400': !active,
                 },
             ]"
-        >{{ title }}</router-link>
+            >{{ title }}</router-link
+        >
     </li>
 </template>

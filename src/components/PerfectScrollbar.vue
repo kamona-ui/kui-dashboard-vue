@@ -10,7 +10,7 @@ const props = defineProps({
     tagname: {
         type: String,
         default: 'div',
-    }
+    },
 })
 
 const { settings, tagname } = props
@@ -41,7 +41,7 @@ onUnmounted(() => {
 </template>
 
 <style>
-@import "perfect-scrollbar/css/perfect-scrollbar.css";
+@import 'perfect-scrollbar/css/perfect-scrollbar.css';
 
 .dark .ps__rail-y,
 .dark .ps__rail-x {

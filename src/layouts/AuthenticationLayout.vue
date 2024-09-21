@@ -5,7 +5,7 @@ import PageFooter from '@/components/PageFooter.vue'
 
 <template>
     <div
-        class="flex flex-col items-center justify-center min-h-screen gap-4 py-6 bg-gray-100 dark:bg-dark-bg"
+        class="flex flex-col items-center justify-center min-h-screen gap-4 py-6 bg-gray-100 dark:bg-dark-eval-0"
     >
         <div class="flex-shrink-0">
             <router-link :to="{ name: 'Dashboard' }">

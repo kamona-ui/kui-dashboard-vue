@@ -46,8 +46,18 @@ onUnmounted(() => {
                 class="md:hidden"
                 srText="Toggle dark mode"
             >
-                <Icon icon="mdi:weather-night" v-show="!isDark" aria-hidden="true" :class="iconSizeClasses" />
-                <Icon icon="mdi:white-balance-sunny" v-show="isDark" aria-hidden="true" :class="iconSizeClasses" />
+                <Icon
+                    icon="mdi:weather-night"
+                    v-show="!isDark"
+                    aria-hidden="true"
+                    :class="iconSizeClasses"
+                />
+                <Icon
+                    icon="mdi:white-balance-sunny"
+                    v-show="isDark"
+                    aria-hidden="true"
+                    :class="iconSizeClasses"
+                />
             </Button>
         </div>
 
@@ -60,8 +70,18 @@ onUnmounted(() => {
                 class="hidden md:inline-flex"
                 srText="Toggle dark mode"
             >
-                <Icon icon="mdi:weather-night" v-show="!isDark" aria-hidden="true" :class="iconSizeClasses" />
-                <Icon icon="mdi:white-balance-sunny" v-show="isDark" aria-hidden="true" :class="iconSizeClasses" />
+                <Icon
+                    icon="mdi:weather-night"
+                    v-show="!isDark"
+                    aria-hidden="true"
+                    :class="iconSizeClasses"
+                />
+                <Icon
+                    icon="mdi:white-balance-sunny"
+                    v-show="isDark"
+                    aria-hidden="true"
+                    :class="iconSizeClasses"
+                />
             </Button>
 
             <Button
@@ -78,7 +98,12 @@ onUnmounted(() => {
                     aria-hidden="true"
                     :class="iconSizeClasses"
                 />
-                <Icon icon="mdi:arrow-collapse-all" v-show="isFullscreen" aria-hidden="true" :class="iconSizeClasses" />
+                <Icon
+                    icon="mdi:arrow-collapse-all"
+                    v-show="isFullscreen"
+                    aria-hidden="true"
+                    :class="iconSizeClasses"
+                />
             </Button>
 
             <!-- Dropdwon -->
@@ -111,7 +136,12 @@ onUnmounted(() => {
             },
         ]"
     >
-        <Button icon="mdi:magnify" iconOnly variant="secondary" srText="Search" />
+        <Button
+            icon="mdi:magnify"
+            iconOnly
+            variant="secondary"
+            srText="Search"
+        />
 
         <router-link :to="{ name: 'Dashboard' }">
             <Logo class="w-10 h-10" />
@@ -126,8 +156,18 @@ onUnmounted(() => {
             class="md:hidden"
             srText="toggle menu"
         >
-            <Icon icon="mdi:menu" v-show="!sidebarState.isOpen" aria-hidden="true" :class="iconSizeClasses" />
-            <Icon icon="mdi:window-close" v-show="sidebarState.isOpen" aria-hidden="true" :class="iconSizeClasses" />
+            <Icon
+                icon="mdi:menu"
+                v-show="!sidebarState.isOpen"
+                aria-hidden="true"
+                :class="iconSizeClasses"
+            />
+            <Icon
+                icon="mdi:window-close"
+                v-show="sidebarState.isOpen"
+                aria-hidden="true"
+                :class="iconSizeClasses"
+            />
         </Button>
     </div>
 </template>

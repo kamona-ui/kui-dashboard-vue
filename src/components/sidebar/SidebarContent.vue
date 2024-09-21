@@ -39,7 +39,10 @@ const isCurrentPath = (path) => {
             />
         </SidebarCollapsible>
 
-        <SidebarCollapsible icon="mdi:shield-star-outline" title="Authentication">
+        <SidebarCollapsible
+            icon="mdi:shield-star-outline"
+            title="Authentication"
+        >
             <SidebarCollapsibleItem :to="{ name: 'Login' }" title="Login" />
             <SidebarCollapsibleItem
                 :to="{ name: 'Register' }"
