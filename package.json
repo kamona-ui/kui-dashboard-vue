@@ -29,7 +29,8 @@
     "vue-toastification": "^2.0.0-rc.5"
   },
   "devDependencies": {
-    "@iconify/vue": "^4.1.2",
+    "@iconify-json/tabler": "^1.2.15",
+    "@iconify/tailwind": "^1.2.0",
     "@tailwindcss/forms": "^0.5.9",
     "@vitejs/plugin-vue": "^5.1.4",
     "@vitejs/plugin-vue-jsx": "^4.0.1",
@@ -37,6 +38,8 @@
     "gh-pages": "^4.0.0",
     "postcss": "^8.4.47",
     "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "tailwind-merge": "^2.6.0",
     "tailwindcss": "^3.4.12",
     "vite": "^5.4.7"
   }

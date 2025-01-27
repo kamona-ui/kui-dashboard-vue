@@ -18,17 +18,17 @@ const isCurrentPath = (path) => {
     <PerfrectScrollbar
         tagname="nav"
         aria-label="main"
-        class="relative flex flex-col flex-1 max-h-full gap-4 px-3"
+        class="relative flex max-h-full flex-1 flex-col gap-4 px-3"
     >
         <SidebarLink
             title="Dashboard"
             :to="{ name: 'Dashboard' }"
             :active="isCurrentRoute('Dashboard')"
-            icon="mdi:view-dashboard"
+            icon="tabler--dashboard"
         />
 
         <SidebarCollapsible
-            icon="mdi:note-outline"
+            icon="tabler--file"
             title="Pages"
             :active="isCurrentPath('/pages')"
         >
@@ -39,10 +39,7 @@ const isCurrentPath = (path) => {
             />
         </SidebarCollapsible>
 
-        <SidebarCollapsible
-            icon="mdi:shield-star-outline"
-            title="Authentication"
-        >
+        <SidebarCollapsible icon="tabler--shield" title="Authentication">
             <SidebarCollapsibleItem :to="{ name: 'Login' }" title="Login" />
             <SidebarCollapsibleItem
                 :to="{ name: 'Register' }"

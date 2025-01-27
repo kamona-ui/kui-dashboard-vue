@@ -28,7 +28,7 @@ const submit = () => {
             <div class="space-y-2">
                 <Label for="email" value="Email" />
 
-                <InputIconWrapper icon="mdi:email-outline">
+                <InputIconWrapper icon="tabler--mail">
                     <Input
                         withIcon
                         id="email"
@@ -47,9 +47,8 @@ const submit = () => {
             <div>
                 <Button
                     type="submit"
-                    class="justify-center w-full gap-2"
+                    class="w-full justify-center gap-2"
                     :disabled="forgotPasswordForm.processing"
-                    left-icon="mdi:send-outline"
                 >
                     <span>Email Password Reset Link</span>
                 </Button>

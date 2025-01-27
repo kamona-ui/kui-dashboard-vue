@@ -2,7 +2,7 @@
 import { reactive, ref } from 'vue'
 import Button from '@/components/Button.vue'
 
-const props = defineProps({
+defineProps({
     status: String,
 })
 
@@ -33,7 +33,7 @@ const submit = () => {
     </div>
 
     <form @submit.prevent="submit">
-        <div class="flex items-center justify-between mt-4">
+        <div class="mt-4 flex items-center justify-between">
             <Button
                 type="submit"
                 :class="{ 'opacity-25': verifyEmailForm.processing }"

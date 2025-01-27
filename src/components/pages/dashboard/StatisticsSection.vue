@@ -18,7 +18,7 @@ const growthData = [4, 3, 10, 9, 29, 19, 22, 9, 12, 7, 19, 5, 13]
             result="12.4k"
             percentage="32.40%"
             :actions="[{ title: 'View', to: '#' }]"
-            icon="mdi:account-group-outline"
+            icon="tabler--users-group"
         />
 
         <!-- Visits card -->
@@ -29,7 +29,7 @@ const growthData = [4, 3, 10, 9, 29, 19, 22, 9, 12, 7, 19, 5, 13]
             status="danger"
             percentage="-2.10%"
             :actions="[{ title: 'View', to: '#' }]"
-            icon="mdi:eye-outline"
+            icon="tabler--eye"
         />
 
         <!-- Orders card -->
@@ -40,7 +40,7 @@ const growthData = [4, 3, 10, 9, 29, 19, 22, 9, 12, 7, 19, 5, 13]
             status="warning"
             percentage="0.60%"
             :actions="[{ title: 'View', to: '#' }]"
-            icon="mdi:cart-outline"
+            icon="tabler--shopping-cart"
         />
 
         <!-- Growth card -->
@@ -50,7 +50,7 @@ const growthData = [4, 3, 10, 9, 29, 19, 22, 9, 12, 7, 19, 5, 13]
             result="15.6%"
             percentage="7.20%"
             :actions="[{ title: 'View', to: '#' }]"
-            icon="mdi:chart-pie"
+            icon="tabler--chart-pie"
         />
     </section>
 </template>

@@ -9,7 +9,7 @@ const props = defineProps({
     },
     icon: {
         type: String,
-        default: 'mdi:circle-outline',
+        default: 'tabler--circle',
     },
     active: {
         type: Boolean,
@@ -49,11 +49,11 @@ const leave = (el) => {
                 <span
                     v-show="sidebarState.isOpen || sidebarState.isHovered"
                     aria-hidden="true"
-                    class="relative block w-6 h-6 ml-auto"
+                    class="relative ml-auto block h-6 w-6"
                 >
                     <span
                         :class="[
-                            'absolute right-[9px] mt-[-5px] h-2 w-[2px] top-1/2 transition-all duration-200',
+                            'absolute right-[9px] top-1/2 mt-[-5px] h-2 w-[2px] transition-all duration-200',
                             {
                                 '-rotate-45': isOpen,
                                 'rotate-45': !isOpen,
@@ -64,7 +64,7 @@ const leave = (el) => {
                     ></span>
                     <span
                         :class="[
-                            'absolute left-[9px] mt-[-5px] h-2 w-[2px] top-1/2 transition-all duration-200',
+                            'absolute left-[9px] top-1/2 mt-[-5px] h-2 w-[2px] transition-all duration-200',
                             {
                                 'rotate-45': isOpen,
                                 '-rotate-45': !isOpen,
@@ -88,10 +88,10 @@ const leave = (el) => {
                 v-show="
                     isOpen && (sidebarState.isOpen || sidebarState.isHovered)
                 "
-                class="overflow-hidden transition-all duration-200 max-h-0"
+                class="max-h-0 overflow-hidden transition-all duration-200"
             >
                 <ul
-                    class="relative px-0 pt-2 pb-0 ml-5 before:w-0 before:block before:absolute before:inset-y-0 before:left-0 before:border-l-2 before:border-l-gray-200 dark:before:border-l-gray-600"
+                    class="relative ml-5 px-0 pb-0 pt-2 before:absolute before:inset-y-0 before:left-0 before:block before:w-0 before:border-l-2 before:border-l-gray-200 dark:before:border-l-gray-600"
                 >
                     <slot />
                 </ul>

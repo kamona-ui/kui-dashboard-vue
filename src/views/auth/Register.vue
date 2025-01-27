@@ -25,7 +25,7 @@ const register = () => {}
             <div class="space-y-2">
                 <Label for="name" value="Name" />
 
-                <InputIconWrapper icon="mdi:account-outline">
+                <InputIconWrapper icon="tabler--user-plus">
                     <Input
                         withIcon
                         id="name"
@@ -44,7 +44,7 @@ const register = () => {}
             <div class="space-y-2">
                 <Label for="email" value="Email" />
 
-                <InputIconWrapper icon="mdi:email-outline">
+                <InputIconWrapper icon="tabler--mail">
                     <Input
                         withIcon
                         id="email"
@@ -62,7 +62,7 @@ const register = () => {}
             <div class="space-y-2">
                 <Label for="password" value="Password" />
 
-                <InputIconWrapper icon="mdi:lock-outline">
+                <InputIconWrapper icon="tabler--lock">
                     <Input
                         withIcon
                         id="password"
@@ -80,7 +80,7 @@ const register = () => {}
             <div class="space-y-2">
                 <Label for="password_confirmation" value="Confirm Password" />
 
-                <InputIconWrapper icon="mdi:lock-outline">
+                <InputIconWrapper icon="tabler--lock">
                     <Input
                         withIcon
                         id="password_confirmation"
@@ -130,9 +130,9 @@ const register = () => {}
             <div>
                 <Button
                     type="submit"
-                    class="justify-center w-full gap-2"
+                    class="w-full justify-center gap-2"
                     :disabled="registerForm.processing"
-                    left-icon="mdi:account-plus-outline"
+                    start-icon="tabler--user-plus"
                 >
                     <span>Register</span>
                 </Button>

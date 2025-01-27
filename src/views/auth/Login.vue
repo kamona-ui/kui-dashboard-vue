@@ -23,7 +23,7 @@ const login = () => {}
             <div class="space-y-2">
                 <Label for="email" value="Email" />
 
-                <InputIconWrapper icon="mdi:email-outline">
+                <InputIconWrapper icon="tabler--mail">
                     <Input
                         withIcon
                         id="email"
@@ -42,7 +42,7 @@ const login = () => {}
             <div class="space-y-2">
                 <Label for="password" value="Password" />
 
-                <InputIconWrapper icon="mdi:lock-outline">
+                <InputIconWrapper icon="tabler--lock">
                     <Input
                         withIcon
                         id="password"
@@ -78,9 +78,9 @@ const login = () => {}
             <div>
                 <Button
                     type="submit"
-                    class="justify-center w-full gap-2"
+                    class="w-full justify-center gap-2"
                     :disabled="loginForm.processing"
-                    left-icon="mdi:login"
+                    start-icon="tabler--login"
                 >
                     <span>Log in</span>
                 </Button>

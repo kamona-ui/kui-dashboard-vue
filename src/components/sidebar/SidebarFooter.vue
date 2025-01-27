@@ -11,7 +11,7 @@ import { sidebarState } from '@/composables'
             v-show="!sidebarState.isOpen"
             @click="sidebarState.isOpen = !sidebarState.isOpen"
             sr-text="Open sidebar"
-            icon="mdi:menu-close"
+            icon="tabler--x"
         />
     </div>
 </template>

@@ -5,18 +5,18 @@ import PageFooter from '@/components/PageFooter.vue'
 
 <template>
     <div
-        class="flex flex-col items-center justify-center min-h-screen gap-4 py-6 bg-gray-100 dark:bg-dark-eval-0"
+        class="flex min-h-screen flex-col items-center justify-center gap-4 bg-gray-100 py-6 dark:bg-dark-eval-0"
     >
         <div class="flex-shrink-0">
             <router-link :to="{ name: 'Dashboard' }">
-                <Logo class="w-20 h-20" />
+                <Logo class="h-20 w-20" />
                 <span class="sr-only">Dashboard</span>
             </router-link>
         </div>
 
-        <main class="flex items-center flex-1 w-full sm:max-w-md">
+        <main class="flex w-full flex-1 items-center sm:max-w-md">
             <div
-                class="w-full px-6 py-4 overflow-hidden bg-white shadow-md sm:rounded-lg dark:bg-dark-eval-1"
+                class="w-full overflow-hidden bg-white px-6 py-4 shadow-md dark:bg-dark-eval-1 sm:rounded-lg"
             >
                 <router-view></router-view>
             </div>

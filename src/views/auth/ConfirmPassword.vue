@@ -44,7 +44,7 @@ const submit = () => {
             <div>
                 <Button
                     type="submit"
-                    class="justify-center w-full"
+                    class="w-full justify-center"
                     :disabled="confirmPasswordForm.processing"
                 >
                     Confirm

@@ -5,5 +5,8 @@
     "printWidth": 80,
     "tabWidth": 4,
     "bracketSameLine": false,
-    "endOfLine": "auto"
+    "endOfLine": "auto",
+    "plugins": [
+        "prettier-plugin-tailwindcss"
+    ]
 }

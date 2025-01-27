@@ -1,7 +1,6 @@
 <script setup>
 import BaseCard from '@/components/BaseCard.vue'
 import Button from '@/components/Button.vue'
-import { Icon } from '@iconify/vue'
 </script>
 
 <template>
@@ -27,8 +26,8 @@ import { Icon } from '@iconify/vue'
                 >
                     <div class="flex items-center gap-2">
                         <img
-                            class="w-10 h-10 rounded-md object-cover"
-                            src="https://placekitten.com/200/300"
+                            class="h-10 w-10 rounded-md object-cover"
+                            src="/images/1.png"
                         />
                         <div>
                             <h5
@@ -44,8 +43,7 @@ import { Icon } from '@iconify/vue'
                     <Button
                         sr-text="Actions"
                         size="sm"
-                        icon-only
-                        icon="mdi:dots-vertical"
+                        icon="tabler--dots-vertical"
                         variant="secondary"
                     />
                 </div>
@@ -58,11 +56,13 @@ import { Icon } from '@iconify/vue'
             >
                 <div class="mt-4 flex items-center justify-between">
                     <div class="flex items-center gap-2">
-                        <Icon
-                            icon="mdi:plus-circle-outline"
+                        <span
                             aria-hidden="true"
-                            class="w-6 h-6 text-green-500"
-                        />
+                            :class="[
+                                'iconify tabler--circle-plus h-6 w-6 text-green-500'
+                            ]"
+                        ></span>
+
                         <div>
                             <h5
                                 class="text-xs text-gray-600 dark:text-gray-300"
@@ -81,11 +81,12 @@ import { Icon } from '@iconify/vue'
                 </div>
                 <div class="mt-4 flex items-center justify-between">
                     <div class="flex items-center gap-2">
-                        <Icon
-                            icon="mdi:minus-circle-outline"
+                        <span
                             aria-hidden="true"
-                            class="w-6 h-6 text-red-500"
-                        />
+                            :class="[
+                                'iconify tabler--circle-minus h-6 w-6 text-red-500'
+                            ]"
+                        ></span>
                         <div>
                             <h5
                                 class="text-xs text-gray-600 dark:text-gray-300"
@@ -104,11 +105,12 @@ import { Icon } from '@iconify/vue'
                 </div>
                 <div class="mt-4 flex items-center justify-between">
                     <div class="flex items-center gap-2">
-                        <Icon
-                            icon="mdi:checkbox-blank-circle-outline"
+                        <span
                             aria-hidden="true"
-                            class="w-6 h-6 text-gray-500"
-                        />
+                            :class="[
+                                'iconify tabler--circle h-6 w-6 text-gray-500'
+                            ]"
+                        ></span>
 
                         <div>
                             <h5

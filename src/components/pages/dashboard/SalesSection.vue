@@ -2,7 +2,6 @@
 import { onMounted, ref } from 'vue'
 import ApexCharts from 'apexcharts'
 import BaseCard from '@/components/BaseCard.vue'
-import { Icon } from '@iconify/vue'
 
 const earningChartEl = ref(null)
 const salesChartEl = ref(null)
@@ -24,13 +23,13 @@ onMounted(() => {
         labels: ['Sales', ''],
         stroke: { width: 0 },
         colors: ['#a855f7', '#e2e8f0'],
-        grid: {
-            padding: {
-                right: -20,
-                bottom: -8,
-                left: -20,
-            },
-        },
+        // grid: {
+        //     padding: {
+        //         right: -20,
+        //         bottom: -8,
+        //         left: -20,
+        //     },
+        // },
         plotOptions: {
             pie: {
                 donut: {
@@ -124,12 +123,11 @@ onMounted(() => {
                 <div class="grid grid-cols-2 gap-6">
                     <!-- Today's user -->
                     <BaseCard no-header bg-classes="bg-purple-500">
-                        <div class="p-2 grid grid-cols-1 gap-4">
-                            <Icon
-                                icon="mdi:account-plus-outline"
+                        <div class="grid grid-cols-1 gap-4 p-2">
+                            <span
                                 aria-hidden="treu"
-                                class="w-10 h-10 text-white"
-                            />
+                                class="iconify tabler--user-plus h-10 w-10 text-white"
+                            ></span>
 
                             <div class="grid gap-2">
                                 <p class="text-base font-medium text-green-300">
@@ -148,12 +146,11 @@ onMounted(() => {
 
                     <!-- Today's sales -->
                     <BaseCard no-header bg-classes="bg-cyan-500">
-                        <div class="p-2 grid grid-cols-1 gap-4">
-                            <Icon
-                                icon="mdi:chart-bar"
-                                aria-hidden="true"
-                                class="w-10 h-10 text-white"
-                            />
+                        <div class="grid grid-cols-1 gap-4 p-2">
+                            <span
+                                aria-hidden="treu"
+                                class="iconify tabler--chart-bar h-10 w-10 text-white"
+                            ></span>
 
                             <div class="grid gap-2">
                                 <p class="text-base font-medium text-green-300">
@@ -187,7 +184,7 @@ onMounted(() => {
                     </div>
 
                     <!-- Donut chart -->
-                    <div class="w-full h-fullflex items-center justify-center">
+                    <div class="h-fullflex w-full items-center justify-center">
                         <div ref="earningChartEl"></div>
                     </div>
                 </BaseCard>
