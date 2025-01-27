@@ -106,10 +106,7 @@ export default defineComponent({
                             ]}
                         >
                             <span
-                                class={[
-                                    icon,
-                                    'iconify h-6 w-6 text-white'
-                                ]} 
+                                class={[icon, 'iconify h-6 w-6 text-white']}
                             ></span>
                         </span>
 

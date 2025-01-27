@@ -1,31 +1,35 @@
 <script setup>
-import { sidebarState } from '@/composables'
+import { useSidebar } from '@/composables'
 import Sidebar from '@/components/sidebar/Sidebar.vue'
 import Navbar from '@/components/Navbar.vue'
 import PageFooter from '@/components/PageFooter.vue'
+
+const { isOpen } = useSidebar()
 </script>
 
 <template>
     <div
-        class="min-h-screen bg-gray-100 text-gray-900 dark:bg-dark-eval-0 dark:text-gray-100"
+        class="flex min-h-screen bg-gray-100 text-gray-900 dark:bg-dark-eval-0 dark:text-gray-100"
     >
         <Sidebar />
 
         <div
-            style="transition-property: margin; transition-duration: 150ms"
             :class="[
-                'flex min-h-screen flex-col',
+                'flex min-h-screen flex-1 flex-col transition-[margin] duration-150 md:ms-16',
                 {
-                    'lg:ml-64': sidebarState.isOpen,
-                    'md:ml-16': !sidebarState.isOpen,
+                    'lg:ms-64': isOpen,
                 },
             ]"
         >
             <Navbar />
 
-            <router-view></router-view>
+            <div
+                class="container mx-auto flex flex-1 flex-col items-center gap-4 p-4 sm:gap-6 sm:p-6"
+            >
+                <router-view></router-view>
 
-            <PageFooter />
+                <PageFooter />
+            </div>
         </div>
     </div>
 </template>

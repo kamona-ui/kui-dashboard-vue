@@ -2,6 +2,7 @@
 import { onMounted, ref } from 'vue'
 import BaseCard from '@/components/BaseCard.vue'
 import ApexCharts from 'apexcharts'
+import { isDark } from '@/composables'
 
 const chartEl = ref(null)
 
@@ -76,6 +77,9 @@ onMounted(() => {
                 enabled: true,
             },
             background: 'transparent',
+        },
+        theme: {
+            mode: isDark.value ? 'dark' : 'light',
         },
         stroke: {
             width: 2,
@@ -155,6 +159,14 @@ onMounted(() => {
     })
 
     chart.render()
+
+    window.addEventListener('scheme:changed', () => {
+        chart.updateOptions({
+            theme: {
+                mode: isDark.value ? 'dark' : 'light',
+            },
+        })
+    })
 })
 </script>
 
@@ -170,7 +182,11 @@ onMounted(() => {
                 <div class="flex items-center gap-2">
                     <span
                         aria-hidden="true"
-                        :class="['iconify h-5 w-5', statusIconClasses, statusIcon]"
+                        :class="[
+                            'iconify h-5 w-5',
+                            statusIconClasses,
+                            statusIcon,
+                        ]"
                     ></span>
 
                     <span
@@ -182,8 +198,9 @@ onMounted(() => {
                                 'text-red-500': status == 'danger',
                             },
                         ]"
-                        >{{ percentage }}</span
                     >
+                        {{ percentage }}
+                    </span>
                 </div>
             </div>
         </template>

@@ -1,15 +1,18 @@
 <script setup>
 import { onMounted, onUnmounted } from 'vue'
-import { sidebarState } from '@/composables'
+import { useSidebar } from '@/composables'
 import SidebarHeader from '@/components/sidebar/SidebarHeader.vue'
 import SidebarContent from '@/components/sidebar/SidebarContent.vue'
 import SidebarFooter from '@/components/sidebar/SidebarFooter.vue'
 
+const { isOpen, isHovered, close, handleHover, handleWindowResize } =
+    useSidebar()
+
 onMounted(() => {
-    window.addEventListener('resize', sidebarState.handleWindowResize)
+    window.addEventListener('resize', handleWindowResize)
 
     onUnmounted(() => {
-        window.removeEventListener('resize', sidebarState.handleWindowResize)
+        window.removeEventListener('resize', handleWindowResize)
     })
 })
 </script>
@@ -24,9 +27,9 @@ onMounted(() => {
         leave-to-class="opacity-0"
     >
         <div
-            v-show="sidebarState.isOpen"
-            @click="sidebarState.isOpen = false"
-            class="fixed inset-0 z-20 bg-black/50 lg:hidden"
+            v-show="isOpen"
+            @click="close()"
+            class="fixed inset-0 z-40 bg-black/50 duration-700 md:hidden"
         ></div>
     </transition>
 
@@ -36,16 +39,15 @@ onMounted(() => {
             transition-duration: 150ms;
         "
         :class="[
-            'fixed inset-y-0 z-20 flex flex-col space-y-6 bg-white py-4 shadow-lg dark:bg-dark-eval-1',
+            'fixed inset-y-0 z-40 flex w-64 -translate-x-full flex-col gap-6 bg-white py-3 shadow-lg transition-all duration-200 dark:bg-dark-eval-1 md:transition-[width] lg:translate-x-0',
             {
-                'w-64 translate-x-0':
-                    sidebarState.isOpen || sidebarState.isHovered,
+                'w-64 translate-x-0': isOpen || isHovered,
                 'w-64 -translate-x-full md:w-16 md:translate-x-0':
-                    !sidebarState.isOpen && !sidebarState.isHovered,
+                    !isOpen && !isHovered,
             },
         ]"
-        @mouseenter="sidebarState.handleHover(true)"
-        @mouseleave="sidebarState.handleHover(false)"
+        @mouseenter="handleHover(true)"
+        @mouseleave="handleHover(false)"
     >
         <SidebarHeader />
         <SidebarContent />

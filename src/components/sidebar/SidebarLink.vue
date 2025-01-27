@@ -1,5 +1,5 @@
 <script setup>
-import { sidebarState } from '@/composables'
+import { useSidebar } from '@/composables'
 
 defineProps({
     href: {
@@ -23,6 +23,8 @@ defineProps({
         default: 'tabler--circle',
     },
 })
+
+const { isOpen, isHovered } = useSidebar()
 </script>
 
 <template>
@@ -44,11 +46,9 @@ defineProps({
             :class="['iconify h-6 w-6 flex-shrink-0', icon]"
         ></span>
 
-        <span
-            class="text-base font-medium"
-            v-show="sidebarState.isOpen || sidebarState.isHovered"
-            >{{ title }}</span
-        >
+        <span class="text-base font-medium" v-show="isOpen || isHovered">{{
+            title
+        }}</span>
     </a>
     <router-link
         v-else-if="to"
@@ -68,10 +68,7 @@ defineProps({
             :class="['iconify h-6 w-6 flex-shrink-0', icon]"
         ></span>
 
-        <span
-            class="text-base font-medium"
-            v-show="sidebarState.isOpen || sidebarState.isHovered"
-        >
+        <span class="text-base font-medium" v-show="isOpen || isHovered">
             {{ title }}
         </span>
     </router-link>
@@ -93,11 +90,9 @@ defineProps({
             :class="['iconify h-6 w-6 flex-shrink-0', icon]"
         ></span>
 
-        <span
-            class="text-base font-medium"
-            v-show="sidebarState.isOpen || sidebarState.isHovered"
-            >{{ title }}</span
-        >
+        <span class="text-base font-medium" v-show="isOpen || isHovered">{{
+            title
+        }}</span>
         <slot name="arrow" />
     </button>
 </template>

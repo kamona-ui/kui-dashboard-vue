@@ -1,7 +1,13 @@
 <script setup>
 import Logo from '@/components/Logo.vue'
 import Button from '@/components/Button.vue'
-import { sidebarState } from '@/composables'
+import { useSidebar } from '@/composables'
+import {
+    MenuFoldLineRightIcon,
+    MenuFoldLineLeftIcon,
+} from '@/components/icons/outline'
+
+const { isOpen, isHovered, toggle } = useSidebar()
 </script>
 
 <template>
@@ -10,7 +16,7 @@ import { sidebarState } from '@/composables'
             :to="{ name: 'Dashboard' }"
             class="inline-flex items-center gap-2"
         >
-            <span class="sr-only">DashboardI</span>
+            <span class="sr-only">Dashboard</span>
             <Logo aria-hidden="true" class="h-auto w-10" />
         </router-link>
 
@@ -18,27 +24,21 @@ import { sidebarState } from '@/composables'
             class="p-2"
             variant="secondary"
             v-slot="{ iconSizeClasses }"
-            v-show="sidebarState.isOpen || sidebarState.isHovered"
-            @click="sidebarState.isOpen = !sidebarState.isOpen"
-            :sr-text="sidebarState.isOpen ? 'Close sidebar' : 'Open sidebar'"
+            v-show="isOpen || isHovered"
+            @click="toggle()"
+            :sr-text="isOpen ? 'Close sidebar' : 'Open sidebar'"
         >
-            <span
+            <MenuFoldLineRightIcon
                 aria-hidden="true"
-                v-show="sidebarState.isOpen"
-                :class="[
-                    'iconify hidden tabler--menu lg:block',
-                    iconSizeClasses,
-                ]"
-            ></span>
+                v-show="!isOpen"
+                :class="['hidden lg:block', iconSizeClasses]"
+            />
 
-            <span
+            <MenuFoldLineLeftIcon
                 aria-hidden="true"
-                v-show="!sidebarState.isOpen"
-                :class="[
-                    'iconify hidden tabler--circle lg:block',
-                    iconSizeClasses,
-                ]"
-            ></span>
+                v-show="isOpen"
+                :class="['hidden lg:block', iconSizeClasses]"
+            />
 
             <span
                 aria-hidden="true"

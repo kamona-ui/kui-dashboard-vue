@@ -66,15 +66,15 @@ defineProps({
                                         'block w-full px-4 py-2 text-left text-sm leading-5 transition duration-150 ease-in-out',
                                         'focus:outline-none',
                                         {
-                                            'bg-gray-100 dark:bg-dark-eval-3 dark:text-white':
-                                                active,
+                                            'bg-primary text-white': active,
                                             'text-gray-700 dark:text-gray-400':
                                                 !active,
                                         },
                                     ]"
                                     :to="to"
-                                    >{{ title }}</router-link
                                 >
+                                    {{ title }}
+                                </router-link>
                             </MenuItem>
                         </div>
                     </MenuItems>

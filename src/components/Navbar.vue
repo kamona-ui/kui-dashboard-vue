@@ -5,12 +5,14 @@ import {
     isDark,
     scrolling,
     toggleDarkMode,
-    sidebarState,
+    useSidebar,
 } from '@/composables'
 import Button from '@/components/Button.vue'
 import Logo from '@/components/Logo.vue'
 import Dropdown from '@/components/Dropdown.vue'
 import DropdownLink from '@/components/DropdownLink.vue'
+
+const { open } = useSidebar()
 
 onMounted(() => {
     document.addEventListener('scroll', handleScroll)
@@ -25,7 +27,7 @@ onUnmounted(() => {
     <nav
         aria-label="secondary"
         :class="[
-            'sticky top-0 z-10 flex items-center justify-between bg-white px-6 py-4 transition-transform duration-500 dark:bg-dark-eval-1',
+            'sticky top-0 z-10 flex items-center justify-between bg-white px-6 py-2 transition-transform duration-500 dark:bg-dark-eval-1',
             {
                 '-translate-y-full': scrolling.down,
                 'translate-y-0': scrolling.up,
@@ -36,7 +38,7 @@ onUnmounted(() => {
             <Button
                 class="p-2 md:hidden"
                 variant="secondary"
-                @click="toggleDarkMode"
+                @click="toggleDarkMode()"
                 v-slot="{ iconSizeClasses }"
                 srText="Toggle dark mode"
             >
@@ -79,10 +81,10 @@ onUnmounted(() => {
             <Dropdown align="right" width="48">
                 <template #trigger>
                     <button
-                        class="flex rounded-md border-2 border-transparent text-sm transition focus:outline-none focus:ring focus:ring-purple-500 focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-dark-eval-1"
+                        class="flex overflow-hidden rounded-md border-2 border-transparent transition focus:outline-none focus:ring focus:ring-primary focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-dark-eval-1"
                     >
                         <img
-                            class="h-8 w-8 rounded-md object-cover"
+                            class="h-10 w-10 rounded-md object-cover"
                             src="/images/avatar.jpeg"
                             alt="Ahmed Kamel"
                         />
@@ -98,7 +100,7 @@ onUnmounted(() => {
     <!-- Mobile bottom bar -->
     <div
         :class="[
-            'fixed inset-x-0 z-10 bottom-0 flex items-center justify-between bg-white px-4 py-4 transition-transform duration-500 dark:bg-dark-eval-1 sm:px-6 md:hidden',
+            'fixed inset-x-0 bottom-0 z-10 flex items-center justify-between bg-white px-4 py-2 transition-transform duration-500 dark:bg-dark-eval-1 sm:px-6 md:hidden',
             {
                 'translate-y-full': scrolling.down,
                 'translate-y-0': scrolling.up,
@@ -113,14 +115,14 @@ onUnmounted(() => {
         />
 
         <router-link :to="{ name: 'Dashboard' }">
-            <Logo aria-hidden="true" class="h-10 w-10" />
+            <Logo aria-hidden="true" class="h-12 w-auto" />
             <span class="sr-only">Dashboard</span>
         </router-link>
 
         <Button
-            icon="tabler--menu"
+            icon="tabler--menu-2"
             variant="secondary"
-            @click="sidebarState.isOpen = !sidebarState.isOpen"
+            @click="open()"
             class="md:hidden"
             srText="toggle menu"
         />

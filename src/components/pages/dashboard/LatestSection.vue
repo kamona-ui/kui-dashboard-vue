@@ -4,7 +4,7 @@ import Button from '@/components/Button.vue'
 </script>
 
 <template>
-    <section class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+    <section class="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <h2 class="sr-only">Latest users</h2>
 
         <!-- Latest users -->
@@ -59,7 +59,7 @@ import Button from '@/components/Button.vue'
                         <span
                             aria-hidden="true"
                             :class="[
-                                'iconify tabler--circle-plus h-6 w-6 text-green-500'
+                                'iconify h-6 w-6 text-green-500 tabler--circle-plus',
                             ]"
                         ></span>
 
@@ -84,7 +84,7 @@ import Button from '@/components/Button.vue'
                         <span
                             aria-hidden="true"
                             :class="[
-                                'iconify tabler--circle-minus h-6 w-6 text-red-500'
+                                'iconify h-6 w-6 text-red-500 tabler--circle-minus',
                             ]"
                         ></span>
                         <div>
@@ -108,7 +108,7 @@ import Button from '@/components/Button.vue'
                         <span
                             aria-hidden="true"
                             :class="[
-                                'iconify tabler--circle h-6 w-6 text-gray-500'
+                                'iconify h-6 w-6 text-gray-500 tabler--circle',
                             ]"
                         ></span>
 

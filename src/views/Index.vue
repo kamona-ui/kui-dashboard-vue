@@ -26,13 +26,15 @@ import Button from '@/components/Button.vue'
             </div>
         </template>
 
-        <!-- Statistics section -->
-        <StatisticsSection />
+        <div class="grid gap-4">
+            <!-- Statistics section -->
+            <StatisticsSection />
 
-        <!-- Sales section -->
-        <SalesSection />
+            <!-- Sales section -->
+            <SalesSection />
 
-        <!-- Latest users & transaction section -->
-        <LatestSection />
+            <!-- Latest users & transaction section -->
+            <LatestSection />
+        </div>
     </PageWrapper>
 </template>

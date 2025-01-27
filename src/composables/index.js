@@ -2,25 +2,13 @@ import { useDark, useToggle } from '@vueuse/core'
 import { reactive, ref } from 'vue'
 
 export const isDark = useDark()
-export const toggleDarkMode = useToggle(isDark)
 
-export const sidebarState = reactive({
-    isOpen: window.innerWidth > 1024,
-    isHovered: false,
-    handleHover(value) {
-        if (window.innerWidth < 1024) {
-            return
-        }
-        sidebarState.isHovered = value
-    },
-    handleWindowResize() {
-        if (window.innerWidth <= 1024) {
-            sidebarState.isOpen = false
-        } else {
-            sidebarState.isOpen = true
-        }
-    },
-})
+// export const toggleDarkMode = useToggle(isDark)
+export const toggleDarkMode = () => {
+    isDark.value = !isDark.value
+
+    document.dispatchEvent(new CustomEvent('scheme:changed', {}))
+}
 
 export const scrolling = reactive({
     down: false,
@@ -46,4 +34,49 @@ export const handleScroll = () => {
         }
     }
     lastScrollTop = st <= 0 ? 0 : st // For Mobile or negative scrolling
+}
+
+const isOpen = ref(window.innerWidth > 1024)
+
+const isHovered = ref(false)
+
+export const useSidebar = () => {
+    const open = () => {
+        isOpen.value = true
+    }
+
+    const close = () => {
+        isOpen.value = false
+    }
+
+    const toggle = () => {
+        isOpen.value = !isOpen.value
+    }
+
+    const handleHover = (v) => {
+        if (window.innerWidth < 1024) {
+            return
+        }
+
+        isHovered.value = v
+    }
+
+    const handleWindowResize = () => {
+        if (!isOpen.value) return
+        if (window.innerWidth <= 1024) {
+            isOpen.value = false
+        } else {
+            isOpen.value = true
+        }
+    }
+
+    return {
+        isOpen,
+        isHovered,
+        open,
+        close,
+        toggle,
+        handleHover,
+        handleWindowResize,
+    }
 }

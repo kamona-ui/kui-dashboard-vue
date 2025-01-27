@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import NProgress from 'nprogress'
 import routes from '@/router/routes'
-import { sidebarState } from '@/composables'
+import { useSidebar } from '@/composables'
 
 const router = createRouter({
     history: createWebHashHistory('kui-dashboard-vue'),
@@ -12,9 +12,11 @@ router.beforeEach(() => {
     NProgress.start()
 })
 
+const { close } = useSidebar()
+
 router.afterEach(() => {
     if (window.innerWidth <= 1024) {
-        sidebarState.isOpen = false
+        close()
     }
     NProgress.done()
 })

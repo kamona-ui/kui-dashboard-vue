@@ -1,7 +1,9 @@
 <script setup>
 import { ref, toRefs } from 'vue'
 import SidebarLink from '@/components/sidebar/SidebarLink.vue'
-import { sidebarState } from '@/composables'
+import { useSidebar } from '@/composables'
+
+const { isOpen: isSidebarOpen, isHovered } = useSidebar()
 
 const props = defineProps({
     title: {
@@ -47,7 +49,7 @@ const leave = (el) => {
         >
             <template #arrow>
                 <span
-                    v-show="sidebarState.isOpen || sidebarState.isHovered"
+                    v-show="isSidebarOpen || isHovered"
                     aria-hidden="true"
                     class="relative ml-auto block h-6 w-6"
                 >
@@ -85,9 +87,7 @@ const leave = (el) => {
             appear
         >
             <div
-                v-show="
-                    isOpen && (sidebarState.isOpen || sidebarState.isHovered)
-                "
+                v-show="isOpen && (isSidebarOpen || isHovered)"
                 class="max-h-0 overflow-hidden transition-all duration-200"
             >
                 <ul

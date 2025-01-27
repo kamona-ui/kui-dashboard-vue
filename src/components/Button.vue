@@ -1,6 +1,6 @@
 <script setup>
-import { toRefs, computed, useAttrs } from 'vue'
-import { twMerge, twJoin } from 'tailwind-merge'
+import { toRefs, useAttrs } from 'vue'
+import { twMerge } from 'tailwind-merge'
 
 const props = defineProps({
     variant: {

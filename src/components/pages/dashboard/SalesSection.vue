@@ -2,9 +2,21 @@
 import { onMounted, ref } from 'vue'
 import ApexCharts from 'apexcharts'
 import BaseCard from '@/components/BaseCard.vue'
+import { isDark } from '@/composables'
 
 const earningChartEl = ref(null)
 const salesChartEl = ref(null)
+
+const actions = [
+    {
+        title: 'Action one',
+        to: '#',
+    },
+    {
+        title: 'Action two',
+        to: '#',
+    },
+]
 
 onMounted(() => {
     let earningChart = new ApexCharts(earningChartEl.value, {
@@ -14,22 +26,26 @@ onMounted(() => {
             toolbar: {
                 show: false,
             },
+            background: 'transparent',
+        },
+        theme: {
+            mode: isDark.value ? 'dark' : 'light',
         },
         dataLabels: {
             enabled: false,
         },
         legend: { show: false },
         comparedResult: [2, 8],
-        labels: ['Sales', ''],
+        labels: ['A', 'B'],
         stroke: { width: 0 },
         colors: ['#a855f7', '#e2e8f0'],
-        // grid: {
-        //     padding: {
-        //         right: -20,
-        //         bottom: -8,
-        //         left: -20,
-        //     },
-        // },
+        grid: {
+            padding: {
+                right: -20,
+                bottom: -8,
+                left: -20,
+            },
+        },
         plotOptions: {
             pie: {
                 donut: {
@@ -56,6 +72,7 @@ onMounted(() => {
             },
         },
     })
+
     earningChart.render()
 
     let salesChart = new ApexCharts(salesChartEl.value, {
@@ -78,6 +95,10 @@ onMounted(() => {
             toolbar: {
                 show: false,
             },
+            background: 'transparent',
+        },
+        theme: {
+            mode: isDark.value ? 'dark' : 'light',
         },
         grid: {
             show: false,
@@ -111,6 +132,20 @@ onMounted(() => {
     })
 
     salesChart.render()
+
+    document.addEventListener('scheme:changed', () => {
+        earningChart.updateOptions({
+            theme: {
+                mode: isDark.value ? 'dark' : 'light',
+            },
+        })
+
+        salesChart.updateOptions({
+            theme: {
+                mode: isDark.value ? 'dark' : 'light',
+            },
+        })
+    })
 })
 </script>
 
@@ -118,7 +153,7 @@ onMounted(() => {
     <section class="grid grid-cols-1">
         <h2 class="sr-only">Sales charts</h2>
 
-        <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
             <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-1">
                 <div class="grid grid-cols-2 gap-6">
                     <!-- Today's user -->
@@ -126,7 +161,7 @@ onMounted(() => {
                         <div class="grid grid-cols-1 gap-4 p-2">
                             <span
                                 aria-hidden="treu"
-                                class="iconify tabler--user-plus h-10 w-10 text-white"
+                                class="iconify h-10 w-10 text-white tabler--user-plus"
                             ></span>
 
                             <div class="grid gap-2">
@@ -149,7 +184,7 @@ onMounted(() => {
                         <div class="grid grid-cols-1 gap-4 p-2">
                             <span
                                 aria-hidden="treu"
-                                class="iconify tabler--chart-bar h-10 w-10 text-white"
+                                class="iconify h-10 w-10 text-white tabler--chart-bar"
                             ></span>
 
                             <div class="grid gap-2">
@@ -184,18 +219,17 @@ onMounted(() => {
                     </div>
 
                     <!-- Donut chart -->
-                    <div class="h-fullflex w-full items-center justify-center">
+                    <div class="flex h-full w-full items-center justify-center">
                         <div ref="earningChartEl"></div>
                     </div>
                 </BaseCard>
             </div>
 
             <!-- Bar chart -->
-            <BaseCard
-                title="Salas Analytics"
-                :actions="[{ title: 'View', to: '#' }]"
-            >
-                <div ref="salesChartEl"></div>
+            <BaseCard title="Salas Analytics" :actions="actions">
+                <div class="overflow-hidden">
+                    <div ref="salesChartEl"></div>
+                </div>
             </BaseCard>
         </div>
     </section>
