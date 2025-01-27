@@ -36,11 +36,11 @@ onMounted(() => {
             transition-duration: 150ms;
         "
         :class="[
-            'fixed inset-y-0 z-20 py-4 flex flex-col space-y-6 bg-white shadow-lg dark:bg-dark-eval-1',
+            'fixed inset-y-0 z-20 flex flex-col space-y-6 bg-white py-4 shadow-lg dark:bg-dark-eval-1',
             {
-                'translate-x-0 w-64':
+                'w-64 translate-x-0':
                     sidebarState.isOpen || sidebarState.isHovered,
-                '-translate-x-full w-64 md:w-16 md:translate-x-0':
+                'w-64 -translate-x-full md:w-16 md:translate-x-0':
                     !sidebarState.isOpen && !sidebarState.isHovered,
             },
         ]"

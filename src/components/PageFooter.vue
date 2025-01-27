@@ -1,10 +1,6 @@
-<script setup>
-import { Icon } from '@iconify/vue'
-</script>
-
 <template>
     <footer
-        class="flex flex-col flex-shrink-0 w-full gap-2 px-6 py-4 lg:flex-row lg:justify-between"
+        class="flex w-full flex-shrink-0 flex-col gap-2 px-6 py-4 lg:flex-row lg:justify-between"
     >
         <p class="text-sm text-gray-500 dark:text-gray-400">
             &#169;
@@ -12,18 +8,17 @@ import { Icon } from '@iconify/vue'
             reserved
         </p>
 
-        <p
+        <div
             class="flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400"
         >
             <span>Hand-crafted & Made with</span>
-            <span>
+            <div class="flex items-center">
                 <span class="sr-only">love</span>
-                <Icon
-                    icon="mdi:heart"
+                <span
                     aria-hidden="true"
-                    class="w-6 h-6 text-red-500"
-                />
-            </span>
+                    class="iconify h-5 w-5 text-red-500 tabler--heart-filled"
+                ></span>
+            </div>
             <span>by</span>
             <a
                 href="https://github.com/Kamona-WD"
@@ -32,6 +27,6 @@ import { Icon } from '@iconify/vue'
             >
                 Ahmed Kamel
             </a>
-        </p>
+        </div>
     </footer>
 </template>

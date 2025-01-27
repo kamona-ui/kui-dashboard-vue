@@ -5,7 +5,7 @@ import Button from '@/components/Button.vue'
 import Input from '@/components/Input.vue'
 import Label from '@/components/Label.vue'
 
-const props = defineProps({
+defineProps({
     email: String,
     token: String,
 })
@@ -29,7 +29,7 @@ const submit = () => {
             <div class="space-y-2">
                 <Label for="email" value="Email" />
 
-                <InputIconWrapper icon="mdi:email-outline">
+                <InputIconWrapper icon="tabler--mail">
                     <Input
                         withIcon
                         id="email"
@@ -47,7 +47,7 @@ const submit = () => {
             <div class="space-y-2">
                 <Label for="password" value="Password" />
 
-                <InputIconWrapper icon="mdi:lock-outline">
+                <InputIconWrapper icon="tabler--lock">
                     <Input
                         withIcon
                         id="password"
@@ -64,7 +64,7 @@ const submit = () => {
             <div class="space-y-2">
                 <Label for="password_confirmation" value="Confirm Password" />
 
-                <InputIconWrapper icon="mdi:lock-outline">
+                <InputIconWrapper icon="tabler--lock">
                     <Input
                         withIcon
                         id="password_confirmation"
@@ -81,7 +81,7 @@ const submit = () => {
             <div>
                 <Button
                     type="submit"
-                    class="justify-center w-full"
+                    class="w-full justify-center"
                     :disabled="resetPasswordForm.processing"
                 >
                     Reset Password

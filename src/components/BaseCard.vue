@@ -23,7 +23,7 @@ defineProps({
 </script>
 
 <template>
-    <div :class="['p-4 rounded-md shadow-md', bgClasses]">
+    <div :class="['rounded-md p-4 shadow-md', bgClasses]">
         <!-- Card header -->
         <div class="flex items-center justify-between" v-if="!noHeader">
             <slot name="header">
@@ -36,8 +36,7 @@ defineProps({
                 <MenuButton as="span">
                     <Button
                         sr-text="Card Actions"
-                        icon="mdi:dots-horizontal"
-                        icon-only
+                        icon="tabler--dots"
                         size="sm"
                         variant="secondary"
                     >
@@ -54,7 +53,7 @@ defineProps({
                     leave-to-class="transform scale-95 opacity-0"
                 >
                     <MenuItems
-                        class="absolute z-30 right-0 w-40 mt-2 origin-top-right bg-white dark:bg-dark-eval-1 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                        class="absolute right-0 z-30 mt-2 w-40 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-dark-eval-1"
                     >
                         <div class="px-1 py-1">
                             <MenuItem
@@ -64,10 +63,10 @@ defineProps({
                             >
                                 <router-link
                                     :class="[
-                                        'block w-full px-4 py-2 text-sm leading-5 text-left  transition duration-150 ease-in-out',
+                                        'block w-full px-4 py-2 text-left text-sm leading-5 transition duration-150 ease-in-out',
                                         'focus:outline-none',
                                         {
-                                            'bg-gray-100 dark:text-white dark:bg-dark-eval-3':
+                                            'bg-gray-100 dark:bg-dark-eval-3 dark:text-white':
                                                 active,
                                             'text-gray-700 dark:text-gray-400':
                                                 !active,

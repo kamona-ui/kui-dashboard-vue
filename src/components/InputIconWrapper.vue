@@ -19,9 +19,12 @@ defineProps({
     >
         <div
             aria-hidden="true"
-            class="absolute inset-y-0 flex items-center px-4 pointer-events-none"
+            class="pointer-events-none absolute inset-y-0 flex items-center px-4"
         >
-            <Icon :icon="icon" :class="iconClasses" />
+            <span
+                aria-hidden="true"
+                :class="['iconify', icon, iconClasses]"
+            ></span>
         </div>
 
         <slot />

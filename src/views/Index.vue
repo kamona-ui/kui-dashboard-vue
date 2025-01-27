@@ -18,8 +18,8 @@ import Button from '@/components/Button.vue'
                     target="_blank"
                     href="https://github.com/kamona-ui/kui-dashboard-vue"
                     variant="black"
-                    class="justify-center max-w-sm gap-2"
-                    left-icon="mdi:github"
+                    class="max-w-sm justify-center gap-2"
+                    start-icon="tabler--brand-github"
                 >
                     <span>Star on Github</span>
                 </Button>

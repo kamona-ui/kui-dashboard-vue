@@ -2,7 +2,6 @@
 import { onMounted, ref } from 'vue'
 import BaseCard from '@/components/BaseCard.vue'
 import ApexCharts from 'apexcharts'
-import { Icon } from '@iconify/vue'
 
 const chartEl = ref(null)
 
@@ -32,7 +31,7 @@ const props = defineProps({
     },
     icon: {
         type: String,
-        default: 'mdi:chart-bar',
+        default: 'tabler--chart',
     },
 })
 
@@ -41,20 +40,20 @@ let statusIconClasses
 
 switch (props.status) {
     case 'success':
-        statusIcon = 'mdi:trending-up'
+        statusIcon = 'tabler--trending-up'
         statusIconClasses = 'w-4 h-4 text-green-500 dark:text-green-200'
         break
     case 'warning':
-        statusIcon = 'mdi:trending-neutral'
+        statusIcon = 'tabler--minus'
         statusIconClasses = 'w-4 h-4 text-yellow-500 dark:text-yellow-200'
         break
     case 'danger':
-        statusIcon = 'mdi:trending-down'
+        statusIcon = 'tabler--trending-down'
         statusIconClasses = 'w-4 h-4 text-red-500 dark:text-red-200'
         break
 
     default:
-        statusIcon = 'mdi:trending-up'
+        statusIcon = 'tabler--trending-up'
         statusIconClasses = 'w-4 h-4 text-green-500 dark:text-green-200'
         break
 }
@@ -76,6 +75,7 @@ onMounted(() => {
             sparkline: {
                 enabled: true,
             },
+            background: 'transparent',
         },
         stroke: {
             width: 2,
@@ -161,33 +161,17 @@ onMounted(() => {
 <template>
     <BaseCard :actions="actions">
         <template #header>
-            <div class="flex items-center gap-6">
-                <Icon
-                    :icon="icon"
+            <div class="flex items-center gap-4">
+                <span
                     aria-hidden="true"
-                    class="w-8 h-8 text-purple-500"
-                />
+                    :class="['iconify h-8 w-8 text-purple-500', icon]"
+                ></span>
 
                 <div class="flex items-center gap-2">
                     <span
-                        :class="[
-                            'p-0.5 block rounded-full',
-                            {
-                                'bg-green-100 dark:bg-green-800':
-                                    status == 'success',
-                                'bg-yellow-100 dark:bg-yellow-800':
-                                    status == 'warning',
-                                'bg-red-100 dark:bg-red-800':
-                                    status == 'danger',
-                            },
-                        ]"
-                    >
-                        <Icon
-                            :icon="statusIcon"
-                            :class="statusIconClasses"
-                            aria-hidden="true"
-                        />
-                    </span>
+                        aria-hidden="true"
+                        :class="['iconify h-5 w-5', statusIconClasses, statusIcon]"
+                    ></span>
 
                     <span
                         :class="[
@@ -209,7 +193,7 @@ onMounted(() => {
                 <h4 class="text-3xl font-semibold">{{ result }}</h4>
                 <p class="text-base font-medium text-gray-500">{{ title }}</p>
             </div>
-            <div class="relative flex items-center max-h-16">
+            <div class="relative flex max-h-16 items-center">
                 <div ref="chartEl"></div>
             </div>
         </div>

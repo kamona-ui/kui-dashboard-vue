@@ -1,5 +1,4 @@
 import { defineComponent } from 'vue'
-import { Icon } from '@iconify/vue'
 import '@/toast/style.css'
 import Button from '@/components/Button.vue'
 
@@ -95,22 +94,23 @@ export default defineComponent({
             <div class="p-6">
                 <div
                     class={[
-                        'relative p-4 rounded-md shadow-lg dark:bg-dark-eval-3',
+                        'relative rounded-md p-4 shadow-lg dark:bg-dark-eval-3',
                         toastBackgroundClass,
                     ]}
                 >
                     <div class="flex items-start gap-4">
                         <span
                             class={[
-                                'inline-flex p-1 rounded-full',
+                                'inline-flex rounded-full p-1',
                                 iconBackgroundClass,
                             ]}
                         >
-                            <Icon
-                                icon={icon}
-                                aria-hidden="true"
-                                class="w-6 h-6 text-white"
-                            />
+                            <span
+                                class={[
+                                    icon,
+                                    'iconify h-6 w-6 text-white'
+                                ]} 
+                            ></span>
                         </span>
 
                         <Button

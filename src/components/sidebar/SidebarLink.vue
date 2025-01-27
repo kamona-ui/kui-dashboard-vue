@@ -1,6 +1,5 @@
 <script setup>
 import { sidebarState } from '@/composables'
-import { Icon } from '@iconify/vue'
 
 defineProps({
     href: {
@@ -21,7 +20,7 @@ defineProps({
     },
     icon: {
         type: String,
-        default: 'mdi:circle-outline',
+        default: 'tabler--circle',
     },
 })
 </script>
@@ -31,16 +30,19 @@ defineProps({
         v-if="href"
         :href="href"
         :class="[
-            'p-2 flex items-center gap-2 rounded-md transition-colors',
+            'flex items-center gap-2 rounded-md p-2 transition-colors',
             {
-                'text-gray-500 hover:text-gray-700 hover:bg-gray-100 dark:hover:text-gray-300 dark:hover:bg-dark-eval-2':
+                'text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:hover:bg-dark-eval-2 dark:hover:text-gray-300':
                     !active,
-                'text-white bg-purple-500 shadow-lg hover:bg-purple-600':
+                'bg-purple-500 text-white shadow-lg hover:bg-purple-600':
                     active,
             },
         ]"
     >
-        <Icon :icon="icon" aria-hidden="true" class="flex-shrink-0 w-6 h-6" />
+        <span
+            aria-hidden="true"
+            :class="['iconify h-6 w-6 flex-shrink-0', icon]"
+        ></span>
 
         <span
             class="text-base font-medium"
@@ -52,16 +54,19 @@ defineProps({
         v-else-if="to"
         :to="to"
         :class="[
-            'p-2 flex items-center gap-2 rounded-md transition-colors',
+            'flex items-center gap-2 rounded-md p-2 transition-colors',
             {
-                'text-gray-500 hover:text-gray-700 hover:bg-gray-100 dark:hover:text-gray-300 dark:hover:bg-dark-eval-2':
+                'text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:hover:bg-dark-eval-2 dark:hover:text-gray-300':
                     !active,
-                'text-white bg-purple-500 shadow-lg hover:bg-purple-600':
+                'bg-purple-500 text-white shadow-lg hover:bg-purple-600':
                     active,
             },
         ]"
     >
-        <Icon :icon="icon" aria-hidden="true" class="flex-shrink-0 w-6 h-6" />
+        <span
+            aria-hidden="true"
+            :class="['iconify h-6 w-6 flex-shrink-0', icon]"
+        ></span>
 
         <span
             class="text-base font-medium"
@@ -74,16 +79,19 @@ defineProps({
         v-else
         type="button"
         :class="[
-            'p-2 w-full flex items-center gap-2 rounded-md transition-colors',
+            'flex w-full items-center gap-2 rounded-md p-2 transition-colors',
             {
-                'text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:text-gray-300 dark:hover:bg-dark-eval-2':
+                'text-gray-400 hover:bg-gray-100 hover:text-gray-500 dark:hover:bg-dark-eval-2 dark:hover:text-gray-300':
                     !active,
-                'text-white bg-purple-500 shadow-lg hover:bg-purple-600':
+                'bg-purple-500 text-white shadow-lg hover:bg-purple-600':
                     active,
             },
         ]"
     >
-        <Icon :icon="icon" aria-hidden="true" class="flex-shrink-0 w-6 h-6" />
+        <span
+            aria-hidden="true"
+            :class="['iconify h-6 w-6 flex-shrink-0', icon]"
+        ></span>
 
         <span
             class="text-base font-medium"

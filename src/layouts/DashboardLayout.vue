@@ -7,14 +7,14 @@ import PageFooter from '@/components/PageFooter.vue'
 
 <template>
     <div
-        class="min-h-screen text-gray-900 bg-gray-100 dark:bg-dark-eval-0 dark:text-gray-100"
+        class="min-h-screen bg-gray-100 text-gray-900 dark:bg-dark-eval-0 dark:text-gray-100"
     >
         <Sidebar />
 
         <div
             style="transition-property: margin; transition-duration: 150ms"
             :class="[
-                'min-h-screen flex flex-col',
+                'flex min-h-screen flex-col',
                 {
                     'lg:ml-64': sidebarState.isOpen,
                     'md:ml-16': !sidebarState.isOpen,
