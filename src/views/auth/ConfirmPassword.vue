@@ -26,7 +26,7 @@ const submit = () => {
             <div class="space-y-2">
                 <Label for="password" value="Password" />
 
-                <InputIconWrapper icon="mdi:lock-outline">
+                <InputIconWrapper icon="tabler-lock">
                     <Input
                         withIcon
                         id="password"
